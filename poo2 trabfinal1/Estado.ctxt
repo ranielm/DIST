@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=usuario
+comment0.target=void\ addAmigo(Usuario)
+comment1.params=usuario
+comment1.target=void\ removeAmigo(Usuario)
+comment2.params=
+comment2.target=void\ addCurtida()
+comment3.params=
+comment3.target=void\ setLimites()
+comment4.params=
+comment4.target=void\ verificarEstado()
+comment5.params=u
+comment5.target=Estado(Usuario)
+numComments=6
