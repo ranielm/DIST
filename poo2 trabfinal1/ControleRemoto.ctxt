@@ -1,8 +1,0 @@
-#BlueJ class context
-comment0.params=
-comment0.target=ControleRemoto()
-comment1.params=comando\ n
-comment1.target=void\ setComando(Comando,\ int)
-comment2.params=n
-comment2.target=void\ bot\u00E3oFoiPressionado(int)
-numComments=3
