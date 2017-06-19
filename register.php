@@ -97,6 +97,7 @@
                                 </p>
                                 </p>
                                 <p> 
+                                    <!-- DISPONIBILIZAR A LISTA DE SETORES EM COMBOBOX PARA EVITAR CADASTRO DE SETOR INEXISTENTE -->
                                     <label for="setor" class="setor" >De qual setor esse produto pertence? </label>
                                     <input id="setor" name="setor" required="required" type="number" placeholder="1,2..."/>
                                 </p>

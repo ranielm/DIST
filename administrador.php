@@ -21,7 +21,7 @@
   <p>Como você é um administrador, pode escolher entre uma das opções abaixo:</p>
   <a class="btn btn-primary btn-lg" href="register.php#tologin" role="button" style="margin-bottom: 6">Cadastrar novo usuário</a>
   <a class="btn btn-primary btn-lg" href="register.php#toregister" role="button" style="margin-bottom: 6">Cadastrar novo produto</a>
-  <a class="btn btn-primary btn-lg" href="produtos.html" role="button" style="margin-bottom: 6">Mostrar produtos em estoque</a>
+  <a class="btn btn-primary btn-lg" href="produtos.php" role="button" style="margin-bottom: 6">Mostrar produtos em estoque</a>
   <a class="btn btn-primary btn-lg" href="onclick="onClick="history.go(-1)" role="button" style="margin-bottom: 6">Voltar para a tela de login</a>
   </div>
 </div>

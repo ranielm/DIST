@@ -1,11 +1,11 @@
 <?php
 //TESTA A CONEXÃO COM O BANCO
-   $host        = "host = 127.0.0.1";
-   $port        = "port = 5432";
-   $dbname      = "dbname = dist";
-   $credentials = "user = postgres password=postgres";
+   $host        = "localhost";
+   $dbname      = "TESTE";
+   $user        = "root";
+   $pass        = "nikito123";
 
-   $db = pg_connect("$host $port $dbname $credentials");
+   $db = mysqli_connect($host, $user, $pass, $dbname);
    if(!$db) 
    {
       echo "Erro : Indisponível para abrir a conexão com o banco de dados\n";
@@ -33,16 +33,16 @@ if ($permissiontype == 1 OR $permissiontype == 0)
   if ($password == $password_confirm) 
   {
   //VERIFICA SE JÁ EXISTE UM COM O MESMO USERNAME OU MESMO EMAIL
-    $result=pg_query($db, "SELECT * FROM USERS WHERE NAME = '$name' OR MAIL = '$mail';");
+    $result=mysqli_query($db, "SELECT * FROM USERS WHERE NAME = '$name' OR MAIL = '$mail';");
     //SE EXISTE VAI PARA A PÁGINA JAEXISTE.PHP
-    if (pg_num_rows($result)>=1)
+    if (mysqli_num_rows($result)>=1)
     {
       $redirect = "jaexiste.php";
        header("location:$redirect");
     }  
     //SE NÃO EXISTE O USUÁRIO É CADASTRADO NO SISTEMA
-    elseif (pg_num_rows($result)==0) {
-      pg_query($db, "INSERT INTO USERS(MAIL, NAME, PERMISSIONTYPE, ROLE, PHONE, PASSWORD) 
+    elseif (mysqli_num_rows($result)==0) {
+      mysqli_query($db, "INSERT INTO USERS(MAIL, NAME, PERMISSIONTYPE, ROLE, PHONE, PASSWORD) 
                             VALUES('$mail', '$name', '$permissiontype', '$role', '$phone', '$password');");
       $redirect = "usuariocadastrado.php";
       header("location:$redirect");

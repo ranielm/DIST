@@ -1,11 +1,11 @@
 <?php
 //TESTA A CONEXÃO COM O BANCO
-   $host        = "host = 127.0.0.1";
-   $port        = "port = 5432";
-   $dbname      = "dbname = dist";
-   $credentials = "user = postgres password=postgres";
+   $host        = "localhost";
+   $dbname      = "TESTE";
+   $user        = "root";
+   $pass        = "nikito123";
 
-   $db = pg_connect("$host $port $dbname $credentials");
+   $db = mysqli_connect($host, $user, $pass, $dbname);
    if(!$db) 
    {
       echo "Erro : Indisponível para abrir a conexão com o banco de dados\n";
@@ -21,10 +21,10 @@
 $productname=$_REQUEST['name']; 
 $incramount=$_REQUEST['qtdadeainserir']; 
 $expirationdate=$_REQUEST['validade']; 
-$sector=$_REQUEST['setor']; 
+$sector=$_REQUEST['setor']; // VERIFICAR SE SETOR DE ENTRADA EXISTE
 
 //INSERE O PRODUTO NO BANCO
-  pg_query($db, "INSERT INTO PRODUCT(NAME, AMOUNSTINSTOCK, EXPIRATIONDATE, SECTOR) 
+  mysqli_query($db, "INSERT INTO PRODUCT(NAME, AMOUNSTINSTOCK, EXPIRATIONDATE, SECTOR) 
                               VALUES('$productname', '$incramount', '$expirationdate', '$sector');");
       $redirect = "produtocadastrado.php";
       header("location:$redirect");

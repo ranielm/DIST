@@ -1,11 +1,11 @@
 <?php
 //TESTA A CONEXÃO COM O BANCO
-   $host        = "host = 127.0.0.1";
-   $port        = "port = 5432";
-   $dbname      = "dbname = dist";
-   $credentials = "user = postgres password=postgres";
+   $host        = "localhost";
+   $dbname      = "TESTE";
+   $user        = "root";
+   $pass        = "nikito123";
 
-   $db = pg_connect("$host $port $dbname $credentials");
+   $db = mysqli_connect($host, $user, $pass, $dbname);
    if(!$db) 
    {
       echo "Erro : Indisponível para abrir a conexão com o banco de dados\n";
@@ -20,20 +20,20 @@
 $myusername=$_REQUEST['username']; 
 $mypassword=$_REQUEST['password']; 
 
-$result=pg_query($db, "SELECT * FROM USERS WHERE NAME = '$myusername' AND PASSWORD = '$mypassword' AND PERMISSIONTYPE = '0';");
-if (pg_num_rows($result)==1){
+$result=mysqli_query($db, "SELECT * FROM USERS WHERE NAME = '$myusername' AND PASSWORD = '$mypassword' AND PERMISSIONTYPE = '0';");
+if (mysqli_num_rows($result)==1){
   $redirect = "administrador.php";
    header("location:$redirect");
 }
 
-$result=pg_query($db, "SELECT * FROM USERS WHERE NAME = '$myusername' AND PASSWORD = '$mypassword' AND PERMISSIONTYPE = '1';");
-if (pg_num_rows($result)==1){
-  $redirect = "produtos.html";
+$result=mysqli_query($db, "SELECT * FROM USERS WHERE NAME = '$myusername' AND PASSWORD = '$mypassword' AND PERMISSIONTYPE = '1';");
+if (mysqli_num_rows($result)==1){
+  $redirect = "produtos.php";
    header("location:$redirect");
 }
 
-$result=pg_query($db, "SELECT * FROM USERS WHERE NAME = '$myusername' AND PASSWORD = '$mypassword';");
-if (pg_num_rows($result)==0){
+$result=mysqli_query($db, "SELECT * FROM USERS WHERE NAME = '$myusername' AND PASSWORD = '$mypassword';");
+if (mysqli_num_rows($result)==0){
   $redirect = "incorreto.php";
    header("location:$redirect");
 }

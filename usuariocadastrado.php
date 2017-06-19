@@ -20,7 +20,7 @@
   <h1>Usuário cadastrado com sucesso! O que deseja fazer agora?</h1>
   <a class="btn btn-primary btn-lg" href="register.php#tologin" role="button" style="margin-bottom: 6">Cadastrar novo usuário</a>
   <a class="btn btn-primary btn-lg" href="register.php#toregister" role="button" style="margin-bottom: 6">Cadastrar novo produto</a>
-  <a class="btn btn-primary btn-lg" href="produtos.html" role="button" style="margin-bottom: 6">Mostrar produtos em estoque</a>
+  <a class="btn btn-primary btn-lg" href="produtos.php" role="button" style="margin-bottom: 6">Mostrar produtos em estoque</a>
   <a class="btn btn-primary btn-lg" href="/" role="button" style="margin-bottom: 6">Voltar para a tela de login</a>
   </div>
 </div>
