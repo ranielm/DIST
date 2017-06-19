@@ -16,14 +16,13 @@ $usuarios = "CREATE TABLE usuarios (
 id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
 primeironome VARCHAR(30) NOT NULL,
 segundonome VARCHAR(30) NOT NULL,
-email VARCHAR(50) NOT NULL,
+email VARCHAR(50) NOT NULL UNIQUE,
 tipopermissao INT(1) NOT NULL,
 cargo VARCHAR(30),
 phone VARCHAR(15),
-nomeusuario VARCHAR(30),
+nomeusuario VARCHAR(30) UNIQUE,
 senha VARCHAR(30) NOT NULL,
-reg_date TIMESTAMP,
-CONSTRAINT usuario UNIQUE (id,email,nomeusuario)
+reg_date TIMESTAMP
 )";
 
 if ($conn->query($usuarios) === TRUE) {
