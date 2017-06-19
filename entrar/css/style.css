@@ -102,6 +102,11 @@ input[type="text"], input[type="password"], input[type="email"]{
 	color: #fff;
 	font-family: 'Quicksand', sans-serif;
 }
+
+input::placeholder {
+  color: white;
+}
+
 input[type="text"]{
 	background: url("../images/user.png") no-repeat 382px 11px;
 	background-size: 25px;
