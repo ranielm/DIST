@@ -1,18 +1,20 @@
 <?php
+$quebra = chr(13).chr(10);
+//DEFINE OS PARAMETROS PARA A CONEXAO COM O BANCO DE DADOS
 $servername = "localhost";
 $username = "id2007186_root";
 $password = "banco";
 $dbname = "id2007186_dist";
 
-// Create connection
+// CRIA A CONEXÃO
 $conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
+// CHECA A CONEXAO
 if ($conn->connect_error) {
     die("Conexão falhou: " . $conn->connect_error);
 } 
 
-// sql to create table
-$usuarios = "CREATE TABLE usuarios (
+// CRIA A TABELA USUARIOS
+$insere = "CREATE TABLE usuarios (
 id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
 primeironome VARCHAR(30) NOT NULL,
 segundonome VARCHAR(30) NOT NULL,
@@ -23,36 +25,21 @@ phone VARCHAR(15),
 nomeusuario VARCHAR(30) UNIQUE,
 senha VARCHAR(30) NOT NULL,
 reg_date TIMESTAMP
-)";
+);
 
-if ($conn->query($usuarios) === TRUE) {
-    echo "A tabela usuários foi criada com sucesso.\n";
-} else {
-    echo "Erro ao criar a tabela usuários: " . $conn->error;
-}
+INSERT INTO usuarios (primeironome, segundonome, email, tipopermissao, cargo, phone, nomeusuario, senha)
+VALUES ('Raniel', 'Mendonça', 'ranieel@outlook.com', 0, 'administrador', '+55034992322116', 'raniel','102030');
 
-$setores = "CREATE TABLE setores (
-(ID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-nomesetor VARCHAR(30) NOT NULL
+CREATE TABLE setores (
+ID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+nomesetor VARCHAR(30) NOT NULL UNIQUE,
 reg_date TIMESTAMP
-)";
+);
 
-if ($conn->query($setores) === TRUE) {
-    echo "A tabela setores foi criada com sucesso.\n";
-} else {
-    echo "Erro ao criar a tabela setores " . $conn->error;
-}
+INSERT INTO setores (nomesetor)
+VALUES ('Principal');
 
-$insereusetores = "INSERT INTO setores (nomesetor)
-VALUES ('Principal')";
-
-if ($conn->query($insereusetores) === TRUE) {
-    echo "Nova gravação persistida com sucesso.";
-} else {
-    echo "Erro: " . $sql . "<br>" . $conn->error;
-}
-
-$produtos = "CREATE TABLE produtos (
+CREATE TABLE produtos (
 ID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 nomeproduto VARCHAR(60) NOT NULL,
 qtdadeestoque INT,
@@ -65,22 +52,17 @@ setor INT(6) UNSIGNED,
 tipo VARCHAR(30),
 FOREIGN KEY (setor) REFERENCES setores (ID),
 reg_date TIMESTAMP
-)";
+);
 
-if ($conn->query($produtos) === TRUE) {
-    echo "A tabela produtos foi criada com sucesso.";
+INSERT INTO produtos (nomeproduto, qtdadeestoque, alertaexpiracao, dataexpiracao, perecivel, fabricante, estoqueminimo, setor, tipo)
+VALUES ('Caneta', 5, 7, '10/07/17', 0, 'bic', 30, 1, 'canetas')";
+
+if ($conn->query($insere) === TRUE) {
+    echo "Sucesso."; 
 } else {
-    echo "Erro ao criar a tabela produtos: " . $conn->error;
+    echo "Erro: " . $conn . "<br>" . $conn->error; 
 }
 
-$insereprodutos = "INSERT INTO produtos (nomeproduto, qtdadeestoque, alertaexpiracao, dataexpiracao, perecivel, fabricante, estoqueminimo, setor, tipo)
-VALUES ('Caneta', 5, 7, 0, 'bic', 30, 1, 'canetas')";
-
-if ($conn->query($insereprodutos) === TRUE) {
-    echo "Nova gravação persistida com sucesso.";
-} else {
-    echo "Erro: " . $sql . "<br>" . $conn->error;
-}
-
+//FECHA A CONEXAO COM O BANCO
 $conn->close();
 ?>
