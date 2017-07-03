@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  <title>PRODUTOS</title>
+  <title>USUÁRIOS</title>
   
   <!-- Bootstrap CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -34,7 +34,7 @@
           // echo nl2br($texto);
         }
 
-        $sql = "SELECT * FROM PRODUCT;";
+        $sql = "SELECT * FROM USERS;";
         $result = mysqli_query($db, $sql);
         $count = 0;
         $active1 = "";
@@ -42,7 +42,7 @@
         if (mysqli_num_rows($result) > 0) {
           // output data of each row
           while($row = mysqli_fetch_assoc($result)) {
-            echo "<a href='editarreg.php?id=" . $row['ID'] . "#toregister' class='list-group-item " . $active1 . "''>" . $row['NAME'] . " - ID: " . $row['ID'] . "<span class='badge'>" . $row['AMOUNSTINSTOCK'] . "</span></a>";
+            echo "<a href='editarreg.php?id=" . $row['ID'] . "#tologin' class='list-group-item " . $active1 . "''>" . $row['NAME'] . " - ID: " . $row['ID'] . " - email: " . $row['MAIL'] . "<span class='badge'>" . $row['PERMISSIONTYPE'] . "</span></a>";
             $count++;
             if($count % 2 == 0) {
               $active1 = "";
@@ -51,7 +51,7 @@
             }
           }
         } else {
-          echo "Nenhum produto cadastrado.";
+          echo "Nenhum usuário cadastrado.";
         }
 
      ?>
