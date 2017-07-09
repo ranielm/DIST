@@ -95,3 +95,4 @@ $ret = pg_query($db, $sql);
 
 pg_query($db, "INSERT INTO USERS(MAIL, NAME, PERMISSIONTYPE, ROLE, PHONE, PASSWORD) 
                           VALUES('ranieel@outlook.com', 'raniel', 0, 'Administrador', '034992322116', '102030');");
+*/
