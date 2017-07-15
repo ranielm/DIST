@@ -154,7 +154,7 @@ if (!isset($_SESSION))
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="http://localhost/principal/pages/index.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="http://localhost/principal/pages/index.php"><i class="fa fa-dashboard fa-fw"></i> Principal</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-users fa-fw"></i> Usuários<span class="fa arrow"></span></a>
@@ -202,23 +202,6 @@ if (!isset($_SESSION))
                         <div class="panel-heading">
                             <i class="fa fa-product-hunt fa-fw"></i> Insira aqui as informações do produto
                             <div class="pull-right">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                                        Ações
-                                        <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu pull-right" role="menu">
-                                        <li><a href="#">Ver últimos inseridos</a>
-                                        </li>
-                                        <li><a href="#">Mais próximos do vencimento</a>
-                                        </li>
-                                        <li><a href="#">Registrar empréstimo</a>
-                                        </li>
-                                        <li class="divider"></li>
-                                        <li><a href="#">Ver todos</a>
-                                        </li>
-                                    </ul>
-                                </div>
                             </div>
                         </div>
                         <!-- /.panel-heading -->
@@ -239,40 +222,69 @@ if (!isset($_SESSION))
                                     <label for="nome" class="nome" >Nome do produto:</label>
                                     <input id="nome" nome="nome" required="required" type="text" placeholder=" Nome" />
                                 </p>
+                                
                                 <p> 
                                     <label for="quantidadeainserirnototal" class="quantidadeainserirnototal"  >Quantidade a inserir:</label>
                                     <input max="9999999999" min="1" id="quantidadeainserirnototal" name="quantidadeainserirnototal" required="required" type="number" placeholder=" 1"/> 
                                 </p>
+                                
                                 <p> 
-                                    <label for="alertadeexpiracao" class="alertadeexpiracao"  >Alerta de expiração:</label>
+                                    <label for="alertadeexpiracao" class="alertadeexpiracao"  >Alerta de expiração em dias:</label>
                                     <input max="25" min="15" id="alertadeexpiracao" name="alertadeexpiracao" required="required" type="number" placeholder=" 15"/> 
                                 </p>
+                                
                                 <p> 
                                     <label for="datadeexpiracao" class="datadeexpiracao" >Qual a validade desses produtos?</label>
                                     <input id="datadeexpiracao" min="2017-07-17" name="datadeexpiracao" required="required" type="date" placeholder="2017-07-17"/>
                                 </p>
-                                </p>
+                                
                                 <p> 
-                                    <!-- DISPONIBILIZAR A LISTA DE SETORES EM COMBOBOX PARA EVITAR CADASTRO DE SETOR INEXISTENTE -->
-                                    <label for="setor" class="setor" >A qual setor esse produto pertence? </label>
-                                    <select id="setor">
-                                    <option value="principal">Principal</option>
-                                    <option value="escritorio">Escritório</option>
-                                    <option value="esportes">Esportes</option>
-                                    <option value="alimentacao">Alimentício</option>
-                                    </select>
+                                <label>É perecível?</label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="ehperecivel" id="ehperecivelsim" value="1" checked>Sim
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="ehperecivel" id="ehperecivelnao" value="2">Não
+                                    </label>
+                                </p>
+                                
+                                <p> 
+                                    <label for="fabricante" class="fabricante" >Nome do fabricante:</label>
+                                    <input id="fabricante" fabricante="fabricante" type="text" placeholder=" Fabricante" />
+                                </p>
+                                
+                                <p> 
+                                    <label for="estoqueminimo" class="estoqueminimo"  >Quantidade em estoque mínimo:</label>
+                                    <input max="99999999" min="1" id="estoqueminimo" name="estoqueminimo" required="required" type="number" placeholder=" 1"/> 
+                                </p>
+                                
+                                <p> 
+                                <!-- DISPONIBILIZAR A LISTA DE SETORES EM COMBOBOX PARA EVITAR CADASTRO DE SETOR INEXISTENTE -->
+                                <label for="setor" class="setor" >A qual setor esse produto pertence? </label>
+                                <select id="setor">
+                                <option value="principal">Principal</option>
+                                <option value="escritorio">Escritório</option>
+                                <option value="esportes">Esportes</option>
+                                <option value="alimentacao">Alimentício</option>
+                                </select>
+                                </p>
   
+                                <p> 
+                                    <label for="tipo" class="tipo" >Tipo do produto:</label>
+                                    <input id="tipo" tipo="tipo" type="text" placeholder=" Tipo" />
+                                </p>
+
                                 </p>
                                 <!--<p class="signin button"> 
 									<input type="submit" value="Cadastrar"/> 
 								</p>-->
                                 <p class="change_link">  
 									Deseja voltar a página inicial?
-									<a href="login.html" class="to_register"> Início </a>
+									<a href="index.php" class="to_inicio"> Início </a>
 								</p>
                                 <p class="change_link">
                                     Terminou?
-                                    <a href="#toregister" class="to_register">Cadastrar produto</a>
+                                    <a href="inserirprodutos.php" class="to_register">Cadastrar produto</a>
                                 </p>
                             </form>
                         </div>
