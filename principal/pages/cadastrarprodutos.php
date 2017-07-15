@@ -160,16 +160,10 @@ if (!isset($_SESSION))
                             <a href="#"><i class="fa fa-users fa-fw"></i> Usuários<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="http://localhost/cadastrar-usuario/index.html">Cadastrar usuário</a>
+                                    <a href="http://localhost/principal/pages/cadastrarusuarios.php">Cadastrar usuário</a>
                                 </li>
                                 <li>
-                                    <a href="http://localhost/principal/pages/usuarios.php">Exibir usuários</a>
-                                </li>
-                                <li>
-                                    <a href="morris.html">Alterar usuário</a>
-                                </li>
-                                <li>
-                                    <a href="morris.html">Deletar usuário</a>
+                                    <a href="http://localhost/principal/pages/exibirusuarios.php">Exibir usuários</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -178,16 +172,10 @@ if (!isset($_SESSION))
                             <a href="#"><i class="fa fa-product-hunt fa-fw"></i> Produtos<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="http://localhost/produtos/cadastrarprodutos.php">Cadastrar produto</a>
+                                    <a href="http://localhost/principal/pages/cadastrarprodutos.php">Cadastrar produto</a>
                                 </li>
                                 <li>
-                                    <a href="http://localhost/produtos/listarprodutos.php">Exibir produtos</a>
-                                </li>
-                                <li>
-                                    <a href="morris.html">Alterar produto</a>
-                                </li>
-                                <li>
-                                    <a href="morris.html">Deletar produto</a>
+                                    <a href="http://localhost/principal/pages/exibirprodutos.php">Exibir produtos</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
