@@ -31,15 +31,15 @@ else{
             $nivel = $row['nivel'];
             if ($nivel == 1) 
             {
-                header("Location: http://localhost/principal/pages/estagiario.php");
+                header("Location: http://localhost/estagiario");
             }
             else if ($nivel == 2)
             {
-                header("Location: http://localhost/principal/pages/usuariocomum.php");
+                header("Location: http://localhost/funcionario");
             }
             else if ($nivel == 3)
             {
-                header("Location: http://localhost/principal/pages/index.php");
+                header("Location: http://localhost/principal/pages");
             }           
         }
     }    
