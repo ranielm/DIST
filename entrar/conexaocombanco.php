@@ -4,9 +4,9 @@ $senha = $_POST['senha'];
 $quebra = chr(13).chr(10);
 //DEFINE OS PARAMETROS PARA A CONEXAO COM O BANCO DE DADOS
 $servername = "localhost";
-$username = "id2007186_root";
+$username = "root";
 $password = "banco";
-$dbname = "id2007186_dist";
+$dbname = "dist";
 
 // CRIA A CONEXÃO
 $mysqli = new mysqli($servername, $username, $password, $dbname);
@@ -31,22 +31,21 @@ else{
             $nivel = $row['nivel'];
             if ($nivel == 1) 
             {
-                header("Location: http://localhost/dist-2.0/principal/pages/estagiario.php");
+                header("Location: http://localhost/principal/pages/estagiario.php");
             }
             else if ($nivel == 2)
             {
-                header("Location: http://localhost/dist-2.0/principal/pages/usuariocomum.php");
+                header("Location: http://localhost/principal/pages/usuariocomum.php");
             }
             else if ($nivel == 3)
             {
-                header("Location: http://dist.000webhostapp.com/principal/pages/index.php");
+                header("Location: http://localhost/principal/pages/index.php");
             }           
         }
     }    
     else if($result->num_rows != 1)
     {
-        echo "<script>alert('Usuário e/ou senha inválidos.');window.location="index2.htm";</script>";      
-        header("Location: http://dist.000webhostapp.com");
+        echo "<script>alert('Usuário e/ou senha inválidos.');window.location='http://localhost/entrar/index.php';</script>";      
     }
 }
 ?>

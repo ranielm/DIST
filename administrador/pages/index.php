@@ -1,3 +1,9 @@
+<?php
+if (!isset($_SESSION)) 
+        {
+            session_start();
+        }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -227,16 +233,16 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="http://dist.000webhostapp.com/principal/pages/index.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="http://localhost/principal/pages/index.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-users fa-fw"></i> Usuários<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="http://dist.000webhostapp.com/cadastrar-usuario/index.html">Cadastrar usuário</a>
+                                    <a href="http://localhost/cadastrar-usuario/index.html">Cadastrar usuário</a>
                                 </li>
                                 <li>
-                                    <a href="http://dist.000webhostapp.com/principal/pages/usuarios.php">Exibir usuários</a>
+                                    <a href="http://localhost/principal/pages/usuarios.php">Exibir usuários</a>
                                 </li>
                                 <li>
                                     <a href="morris.html">Alterar usuário</a>
@@ -251,10 +257,10 @@
                             <a href="#"><i class="fa fa-product-hunt fa-fw"></i> Produtos<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="http://dist.000webhostapp.com/cadastrar-produto/index.html">Cadastrar produto</a>
+                                    <a href="http://localhost/produtos/cadastrarprodutos.html">Cadastrar produto</a>
                                 </li>
                                 <li>
-                                    <a href="http://dist.000webhostapp.com/principal/pages/produtos.php">Exibir produtos</a>
+                                    <a href="http://localhost/produtos/listarprodutos.html">Exibir produtos</a>
                                 </li>
                                 <li>
                                     <a href="morris.html">Alterar produto</a>

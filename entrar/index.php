@@ -30,7 +30,7 @@
 
 	<div class="w3layoutscontaineragileits">
 	<h2>Login</h2>
-		<form action="http://dist.000webhostapp.com/entrar/banco.php" method="post">
+		<form action="http://localhost/entrar/conexaocombanco.php" method="post">
 			<input type="text" Name="usuario" placeholder="Usuário" maxlength="20" required="">
 			<input type="password" Name="senha" placeholder="Senha" required="">
 			<ul class="agileinfotickwthree">
