@@ -1,17 +1,21 @@
-CREATE TABLE IF NOT EXISTS usuarios (
-id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
-primeironome VARCHAR(30) NOT NULL,
-segundonome VARCHAR(30) NOT NULL,
-usuario VARCHAR(20) NOT NULL UNIQUE,
-senha VARCHAR(30) NOT NULL,
-email VARCHAR(50) NOT NULL UNIQUE,
-nivel INT(1) NOT NULL,
-cargo VARCHAR(30),
-telefone VARCHAR(15),
-ativo BOOLEAN NOT NULL, 
-reg_date TIMESTAMP,
-KEY nivel (nivel)
+CREATE TABLE IF NOT EXISTS usuarios 
+(
+	id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+	primeironome VARCHAR(30) NOT NULL,
+	segundonome VARCHAR(30) NOT NULL,
+	usuario VARCHAR(20) NOT NULL UNIQUE,
+	senha VARCHAR(30) NOT NULL,
+	email VARCHAR(50) NOT NULL UNIQUE,
+	nivel INT(1) NOT NULL,
+	cargo VARCHAR(30),
+	telefone VARCHAR(15),
+	ativo BOOLEAN NOT NULL, 
+	reg_date TIMESTAMP,
+	KEY nivel (nivel)
 );
 
 INSERT INTO usuarios (primeironome, segundonome, usuario, senha, email, nivel, cargo, telefone, ativo)
-VALUES ('Raniel', 'Mendonça', 'raniel', md5('102030'), 'ranieel@outlook.com', 3, 'administrador', '+55034992322116', 1);
+			VALUES ('Raniel', 'Mendonça', 'raniel', '102030', 'ranieel@outlook.com', 3, 'administrador', '+55034992322116', 1);
+
+INSERT INTO usuarios (primeironome, segundonome, usuario, senha, email, nivel, cargo, telefone, ativo)
+			VALUES ('Clóvis', 'Nunes', 'clovis', '102030', 'clobnjuh@gmail.com', 3, 'administrador', '+55034996919766', 1);		
