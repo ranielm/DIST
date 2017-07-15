@@ -236,26 +236,30 @@ if (!isset($_SESSION))
                         <div id="register" class="animate form">
                             <form  action="cadastrarproduto.php" autocomplete="on"> 
                                 <p> 
-                                    <label for="name" class="name" >Nome do produto:</label>
-                                    <input id="name" name="name" required="required" type="text" placeholder=" Nome" />
+                                    <label for="nome" class="nome" >Nome do produto:</label>
+                                    <input id="nome" nome="nome" required="required" type="text" placeholder=" Nome" />
                                 </p>
                                 <p> 
-                                    <label for="qtdadeainserir" class="qtdadeainserir"  >Quantidade a inserir:</label>
-                                    <input max="9999999999" min="0" id="qtdadeainserir" name="qtdadeainserir" required="required" type="number" placeholder=" 1,2,3,4..."/> 
+                                    <label for="quantidadeainserirnototal" class="quantidadeainserirnototal"  >Quantidade a inserir:</label>
+                                    <input max="9999999999" min="1" id="quantidadeainserirnototal" name="quantidadeainserirnototal" required="required" type="number" placeholder=" 1"/> 
                                 </p>
                                 <p> 
-                                    <label for="validade" class="validade" >Qual a validade desses produtos?</label>
-                                    <input id="validade" name="validade" required="required" type="date" placeholder=" 2017-08-25"/>
+                                    <label for="alertadeexpiracao" class="alertadeexpiracao"  >Alerta de expiração:</label>
+                                    <input max="25" min="15" id="alertadeexpiracao" name="alertadeexpiracao" required="required" type="number" placeholder=" 15"/> 
+                                </p>
+                                <p> 
+                                    <label for="datadeexpiracao" class="datadeexpiracao" >Qual a validade desses produtos?</label>
+                                    <input id="datadeexpiracao" min="2017-07-17" name="datadeexpiracao" required="required" type="date" placeholder="2017-07-17"/>
                                 </p>
                                 </p>
                                 <p> 
                                     <!-- DISPONIBILIZAR A LISTA DE SETORES EM COMBOBOX PARA EVITAR CADASTRO DE SETOR INEXISTENTE -->
                                     <label for="setor" class="setor" >A qual setor esse produto pertence? </label>
                                     <select id="setor">
-                                    <option value="volvo">Principal</option>
-                                    <option value="saab">Escritório</option>
-                                    <option value="opel">Esportes</option>
-                                    <option value="audi">Alimentício</option>
+                                    <option value="principal">Principal</option>
+                                    <option value="escritorio">Escritório</option>
+                                    <option value="esportes">Esportes</option>
+                                    <option value="alimentacao">Alimentício</option>
                                     </select>
   
                                 </p>
