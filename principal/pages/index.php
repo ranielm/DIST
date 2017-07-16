@@ -3,13 +3,33 @@ if (!isset($_SESSION))
         {
             session_start();
         }
+        header('Content-Type: text/html; charset=utf-8');
+
+        //TESTA A CONEXÃO COM O BANCO
+        $host        = "localhost";
+        $dbname      = "dist";
+        $user        = "root";
+        $pass        = "banco";
+
+        $db = mysqli_connect($host, $user, $pass, $dbname);
+
+
+        if(!$db) 
+        {
+          echo "Erro : Indisponível para abrir a conexão com o banco de dados\n";
+        } else 
+        {
+          $nl=chr(10);
+          $texto = "Conexão com o banco de dados aberta com sucesso";
+          // echo nl2br($texto);
+        }
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -285,6 +305,29 @@ if (!isset($_SESSION))
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                <?php 
+                                                $sql = "SELECT * FROM produtos;";
+                                                $result = mysqli_query($db, $sql);
+
+                                                if (mysqli_num_rows($result) > 0) {
+                                                // output data of each row
+                                                  while($row = mysqli_fetch_assoc($result)) {
+                                                    echo "<tr>
+                                                            <td>" . $row['id'] .  "</td>
+                                                            <td>" . date('d/m/Y', strtotime($row['reg_date'])) .  "</td>
+                                                            <td>" . date('h:i A', strtotime($row['reg_date'])) .  "</td>
+                                                            <td>" . $row['fabricante'] .  "</td>
+                                                            <td>" . $row['quantidadetotal'] .  "</td>
+                                                            <td>" . $row['descricao'] .  "</td>
+                                                        </tr>";
+
+                                              }
+                                          } else {
+                                              echo "Nenhum produto cadastrado.";
+                                          }
+
+
+                                          ?>
                                                 <tr>
                                                     <td>A01</td>
                                                     <td>15/03/2017</td>
@@ -293,7 +336,7 @@ if (!isset($_SESSION))
                                                     <td>15</td>
                                                     <td>Cavalete</td>
                                                 </tr>
-                                                <tr>
+                                                <!-- <tr>
                                                     <td>A02</td>
                                                     <td>15/03/2017</td>
                                                     <td>3:20 PM</td>
@@ -348,7 +391,7 @@ if (!isset($_SESSION))
                                                     <td>R$83.45</td>
                                                     <td>07</td>
                                                     <td>Bola vôlei</td>
-                                                </tr>
+                                                </tr> -->
                                             </tbody>
                                         </table>
                                     </div>
