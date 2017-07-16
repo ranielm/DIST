@@ -74,7 +74,7 @@ if (!isset($_SESSION))
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">DIST</a>
+                <a class="navbar-brand" href="index.php">DIST</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -302,7 +302,7 @@ if (!isset($_SESSION))
                     {
                         $totalacab = $totalacab + 1;
                     }
-                } 
+                }
                 ?>
                 <div class="col-lg-3 col-md-6">
                     <div class="panel panel-yellow">
