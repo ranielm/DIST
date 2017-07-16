@@ -224,7 +224,22 @@ if (!isset($_SESSION))
                                     <i class="fa fa-users fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">02</div>
+                                    <?php 
+                                        $sql = "SELECT * FROM usuarios;";
+                                        $result = mysqli_query($db, $sql);
+
+                                        if (mysqli_num_rows($result) > 0) 
+                                        {
+                                            // output data of each row
+                                            while($row = mysqli_fetch_assoc($result)) 
+                                            {
+                                                $totalusers = $totalusers + 1;
+                                            }
+                                        } else {
+                                                    echo "Nenhum produto cadastrado.";
+                                        }
+                                    ?>
+                                    <div class="huge"><?php echo $totalusers; ?></div>
                                     <div>Usuários cadastrados</div>
                                 </div>
                             </div>
@@ -246,8 +261,23 @@ if (!isset($_SESSION))
                                     <i class="fa fa-product-hunt fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">09</div>
-                                    <div>Produtos cadastrados</div>
+                                    <?php 
+                                        $sql = "SELECT quantidadetotal FROM produtos;";
+                                        $result = mysqli_query($db, $sql);
+
+                                        if (mysqli_num_rows($result) > 0) 
+                                        {
+                                            // output data of each row
+                                            while($row = mysqli_fetch_assoc($result)) 
+                                            {
+                                                $total = $row['quantidadetotal'] + $total;
+                                            }
+                                        } else {
+                                                    echo "Nenhum produto cadastrado.";
+                                        }
+                                    ?>
+                                    <div class="huge"><?php echo $total; ?></div>
+                                    <div> Produtos armazenados</div>
                                 </div>
                             </div>
                         </div>
@@ -297,11 +327,11 @@ if (!isset($_SESSION))
                                             <thead>
                                                 <tr>
                                                     <th>Código</th>
+                                                    <th>Nome</th>
                                                     <th>Data de entrada</th>
                                                     <th>Hora</th>
-                                                    <th>Valor</th>
+                                                    <th>Inserções no dia</th>
                                                     <th>Quantidade</th>
-                                                    <th>Descrição do Produto</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -314,11 +344,11 @@ if (!isset($_SESSION))
                                                   while($row = mysqli_fetch_assoc($result)) {
                                                     echo "<tr>
                                                             <td>" . $row['id'] .  "</td>
+                                                            <td>" . $row['nome'] .  "</td>
                                                             <td>" . date('d/m/Y', strtotime($row['reg_date'])) .  "</td>
                                                             <td>" . date('h:i A', strtotime($row['reg_date'])) .  "</td>
-                                                            <td>" . $row['fabricante'] .  "</td>
+                                                            <td>" . $row['insercoesnodia'] .  "</td>
                                                             <td>" . $row['quantidadetotal'] .  "</td>
-                                                            <td>" . $row['descricao'] .  "</td>
                                                         </tr>";
 
                                               }
@@ -328,6 +358,7 @@ if (!isset($_SESSION))
 
 
                                           ?>
+                                                <!--
                                                 <tr>
                                                     <td>A01</td>
                                                     <td>15/03/2017</td>
@@ -336,7 +367,7 @@ if (!isset($_SESSION))
                                                     <td>15</td>
                                                     <td>Cavalete</td>
                                                 </tr>
-                                                <!-- <tr>
+                                                 <tr>
                                                     <td>A02</td>
                                                     <td>15/03/2017</td>
                                                     <td>3:20 PM</td>
