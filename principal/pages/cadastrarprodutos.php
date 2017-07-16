@@ -217,15 +217,16 @@ if (!isset($_SESSION))
 
                         <!--REGISTERPRODUCT-->
                         <div id="register" class="animate form">
-                            <form  action="cadastrarproduto.php" autocomplete="on"> 
+                            <form  action="inserirprodutos.php" method="post" autocomplete="on"> 
+                                
                                 <p> 
                                     <label for="nome" class="nome" >Nome do produto:</label>
-                                    <input id="nome" nome="nome" required="required" type="text" placeholder=" Nome" />
+                                    <input id="nome" name="nome" required="required" type="text" placeholder=" Nome" />
                                 </p>
                                 
                                 <p> 
-                                    <label for="quantidadeainserirnototal" class="quantidadeainserirnototal"  >Quantidade a inserir:</label>
-                                    <input max="9999999999" min="1" id="quantidadeainserirnototal" name="quantidadeainserirnototal" required="required" type="number" placeholder=" 1"/> 
+                                    <label for="quantidadetotal" class="quantidadetotal"  >Quantidade a inserir:</label>
+                                    <input max="9999999999" min="1" id="quantidadetotal" name="quantidadetotal" required="required" type="number" placeholder=" 1"/> 
                                 </p>
                                 
                                 <p> 
@@ -235,7 +236,7 @@ if (!isset($_SESSION))
                                 
                                 <p> 
                                     <label for="datadeexpiracao" class="datadeexpiracao" >Qual a validade desses produtos?</label>
-                                    <input id="datadeexpiracao" min="2017-07-17" name="datadeexpiracao" required="required" type="date" placeholder="2017-07-17"/>
+                                    <input id="datadeexpiracao" min="2017-07-17" max="2060-01-01" name="datadeexpiracao" required="required" type="date" placeholder="2017-07-17"/>
                                 </p>
                                 
                                 <p> 
@@ -244,13 +245,13 @@ if (!isset($_SESSION))
                                         <input type="radio" name="ehperecivel" id="ehperecivelsim" value="1" checked>Sim
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="ehperecivel" id="ehperecivelnao" value="2">Não
+                                        <input type="radio" name="ehperecivel" id="ehperecivelnao" value="0">Não
                                     </label>
                                 </p>
                                 
                                 <p> 
                                     <label for="fabricante" class="fabricante" >Nome do fabricante:</label>
-                                    <input id="fabricante" fabricante="fabricante" type="text" placeholder=" Fabricante" />
+                                    <input id="fabricante" name="fabricante" type="text" placeholder=" Fabricante" />
                                 </p>
                                 
                                 <p> 
@@ -261,31 +262,40 @@ if (!isset($_SESSION))
                                 <p> 
                                 <!-- DISPONIBILIZAR A LISTA DE SETORES EM COMBOBOX PARA EVITAR CADASTRO DE SETOR INEXISTENTE -->
                                 <label for="setor" class="setor" >A qual setor esse produto pertence? </label>
-                                <select id="setor">
+                                <select id="setor" name="setor">
                                 <option value="principal">Principal</option>
                                 <option value="escritorio">Escritório</option>
                                 <option value="esportes">Esportes</option>
-                                <option value="alimentacao">Alimentício</option>
+                                <option value="alimenticio">Alimentício</option>
                                 </select>
                                 </p>
   
                                 <p> 
                                     <label for="tipo" class="tipo" >Tipo do produto:</label>
-                                    <input id="tipo" tipo="tipo" type="text" placeholder=" Tipo" />
+                                    <input name="tipo" id="tipo" tipo="tipo" type="text" placeholder=" Tipo" />
                                 </p>
 
                                 </p>
                                 <!--<p class="signin button"> 
 									<input type="submit" value="Cadastrar"/> 
-								</p>-->
+                                </p>-->
+                                
+
+                                <button type="submit" class="btn btn-primary">Cadastrar</button>
+                                <a class="btn btn-info" href="index.php" role="button">Voltar ao início</a>
+
+                                <!--
                                 <p class="change_link">  
 									Deseja voltar a página inicial?
 									<a href="index.php" class="to_inicio"> Início </a>
 								</p>
                                 <p class="change_link">
-                                    Terminou?
+                                    <input type="submit" value="Cadastrar produto">
+                                    <input type="button" href="index.php" value="Voltar ao início">
+                                    <a href="index.php" class="to_inicio"> Início </a>
                                     <a href="inserirprodutos.php" class="to_register">Cadastrar produto</a>
-                                </p>
+                                <p>-->
+                                				
                             </form>
                         </div>
 						
