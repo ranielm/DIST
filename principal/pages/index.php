@@ -290,6 +290,78 @@ if (!isset($_SESSION))
                         </a>
                     </div>
                 </div>
+                <?php
+                $totalacab = 0;
+                $sql = "SELECT * FROM produtos WHERE quantidadetotal < estoqueminimo;";
+                $result = mysqli_query($db, $sql);
+
+                if (mysqli_num_rows($result) > 0) 
+                {
+                                            // output data of each row
+                    while($row = mysqli_fetch_assoc($result)) 
+                    {
+                        $totalacab = $totalacab + 1;
+                    }
+                } 
+                ?>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-yellow">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-sort-amount-desc fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge"><?php echo $totalacab; ?></div>
+                                    <div>Produto(s) acabando</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">Veja os detalhes</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-calendar-times-o fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <?php
+                                        $totalvcndo = 0;
+                                        $sql = "SELECT * FROM produtos WHERE datadeexpiracao <= NOW() + INTERVAL 15 DAY;";
+                                        $result = mysqli_query($db, $sql);
+
+                                        if (mysqli_num_rows($result) > 0) 
+                                        {
+                                            // output data of each row
+                                            while($row = mysqli_fetch_assoc($result)) 
+                                            {
+                                                $totalvcndo = $totalvcndo + 1;
+                                            }
+                                        } 
+                                    ?>
+                                    <div class="huge"><?php echo $totalvcndo; ?></div>
+                                    <div>Produto(s) vencendo</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">Veja os detalhes</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
             </div>
             <!-- /.row -->
             <div class="row">
@@ -359,14 +431,6 @@ if (!isset($_SESSION))
 
                                           ?>
                                                 <!--
-                                                <tr>
-                                                    <td>A01</td>
-                                                    <td>15/03/2017</td>
-                                                    <td>3:29 PM</td>
-                                                    <td>R$321.33</td>
-                                                    <td>15</td>
-                                                    <td>Cavalete</td>
-                                                </tr>
                                                  <tr>
                                                     <td>A02</td>
                                                     <td>15/03/2017</td>
