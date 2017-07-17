@@ -1,9 +1,3 @@
-<?php
-if (!isset($_SESSION)) 
-        {
-            session_start();
-        }
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +9,7 @@ if (!isset($_SESSION))
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>DIST - USUÁRIOS</title>
+    <title>DIST - PRINCIPAL</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -54,11 +48,90 @@ if (!isset($_SESSION))
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php">DIST</a>
+                <a class="navbar-brand" href="index.html">DIST</a>
             </div>
             <!-- /.navbar-header -->
 
             <ul class="nav navbar-top-links navbar-right">
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-tasks">
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <p>
+                                        <strong>Produto 1</strong>
+                                        <span class="pull-right text-muted">40% Cheio</span>
+                                    </p>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                            <span class="sr-only">40% Cheio (success)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <p>
+                                        <strong>Produto 2</strong>
+                                        <span class="pull-right text-muted">20% Cheio</span>
+                                    </p>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                                            <span class="sr-only">20% Cheio</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <p>
+                                        <strong>Produto 3</strong>
+                                        <span class="pull-right text-muted">60% Cheio</span>
+                                    </p>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                            <span class="sr-only">60% Cheio (warning)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <p>
+                                        <strong>Produto 4</strong>
+                                        <span class="pull-right text-muted">80% Cheio</span>
+                                    </p>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                                            <span class="sr-only">80% Cheio (danger)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a class="text-center" href="#">
+                                <strong>Veja toda a capacidade</strong>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-tasks -->
+                </li>
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -154,16 +227,22 @@ if (!isset($_SESSION))
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="http://localhost/principal/pages/index.php"><i class="fa fa-home fa-fw"></i> Principal</a>
+                            <a href="http://dist.000webhostapp.com/principal/pages/index.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-users fa-fw"></i> Usuários<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="http://localhost/principal/pages/cadastrarusuarios.php">Cadastrar usuário</a>
+                                    <a href="http://dist.000webhostapp.com/cadastrar-usuario/index.html">Cadastrar usuário</a>
                                 </li>
                                 <li>
-                                    <a href="http://localhost/principal/pages/exibirusuarios.php">Exibir usuários</a>
+                                    <a href="http://dist.000webhostapp.com/principal/pages/usuarios.php">Exibir usuários</a>
+                                </li>
+                                <li>
+                                    <a href="morris.html">Alterar usuário</a>
+                                </li>
+                                <li>
+                                    <a href="morris.html">Deletar usuário</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -172,34 +251,16 @@ if (!isset($_SESSION))
                             <a href="#"><i class="fa fa-product-hunt fa-fw"></i> Produtos<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="http://localhost/principal/pages/cadastrarprodutos.php">Cadastrar produto</a>
+                                    <a href="http://dist.000webhostapp.com/cadastrar-produto/index.html">Cadastrar produto</a>
                                 </li>
                                 <li>
-                                    <a href="http://localhost/principal/pages/exibirprodutos.php">Exibir produtos</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-calendar fa-fw"></i> Relatórios<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="http://localhost/principal/pages/diatoexcelpdf.php">Escolha um dia</a>
+                                    <a href="http://dist.000webhostapp.com/principal/pages/produtos.php">Exibir produtos</a>
                                 </li>
                                 <li>
-                                    <a href="http://localhost/principal/pages/intervalotoexcelpdf.php">Entre intervalos</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-industry fa-fw"></i> Setores<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="http://localhost/principal/pages/cadastrarsetores.php">Cadastrar setor</a>
+                                    <a href="morris.html">Alterar produto</a>
                                 </li>
                                 <li>
-                                    <a href="http://localhost/principal/pages/exibirsetores.php">Exibir setores</a>
+                                    <a href="morris.html">Deletar produto</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -214,114 +275,53 @@ if (!isset($_SESSION))
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Cadastrar Usuários</h1>
+                    <h1 class="page-header">Usuários</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
-
+            <!-- /.row -->
             <div class="row">
                 <div class="col-lg-6">
-                    <!-- /.panel -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-user fa-fw"></i> Insira aqui as informações do usuário
-                            <div class="pull-right">
-                            </div>
+                            Usuários cadastrados
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-            <section>				
-                <div id="container_demo" >
-                    <!-- hidden anchor to stop jump http://www.css3create.com/Astuce-Empecher-le-scroll-avec-l-utilisation-de-target#wrap4  -->
-
-                    <a class="hiddenanchor" id="toregister"></a>
-                    <a class="hiddenanchor" id="tologin"></a>
-
-                    <div id="wrapper">
-                        <div id="login" class="animate form">
-                            <form  action="inserirusuarios.php" method="post" autocomplete="on"> 
-                                <!--REGISTERUSER-->
-
-                                 
-                                <p> 
-                                    <label for="usernamesignup" class="username" >Nome de usuário</label>
-                                    <input id="usernamesignup" name="username" required="required" type="text" placeholder="usuário" />
-                                </p>
-                                <p> 
-                                    <label for="fname" class="name" >Primeiro nome</label>
-                                    <input id="fname" name="fname" required="required" type="text" placeholder="José, João" />
-                                </p>
-                                <p> 
-                                    <label for="lname" class="name" >Segundo nome</label>
-                                    <input id="lname" name="lname" required="required" type="text" placeholder="Sousa, Vieira" />
-                                </p>
-                                <p> 
-                                    <label for="emailsignup" class="mail"  > Informe o email</label>
-                                    <input id="emailsignup" name="mail" required="required" type="email" placeholder="email@servidoremail.com"/> 
-                                </p>
-                                <p> 
-                                    <label for="role" class="role"  > Informe o cargo</label>
-                                    <input id="role" name="role" required="required" type="text" placeholder="função"/> 
-                                </p>
-                                <p> 
-                                    <label for="phone" class="phone" >Digite o número do telefone do usuário</label>
-                                    <input id="phone" name="phone" required="required" type="tel" placeholder="0349..."/>
-                                </p>
-                                <p> 
-                                    <label for="type" class="usertype"  > Informe o tipo do usuário</label>
-                                    <input id="type" name="usertype" required="required" type="number" placeholder="0,1..."/> 
-                                </p>
-                                <p> 
-                                    <label for="passwordsignup" class="youpasswd" >Utilize uma senha forte </label>
-                                    <input id="passwordsignup" name="password" required="required" type="password" placeholder="ex. X8df!90EO"/>
-                                </p>
-                                <p> 
-                                    <label for="passwordsignup_confirm" class="youpasswd" >Por favor confirme a senha </label>
-                                    <input id="passwordsignup_confirm" name="password_confirm" required="required" type="password" placeholder="ex. X8df!90EO"/>
-                                </p>
-<<<<<<< HEAD
-                                <button type="submit" class="btn btn-primary">Cadastrar</button>
-                                <a class="btn btn-info" href="index.php" role="button">Voltar ao início</a>
-                                <!--<p class="signin button"> 
-=======
-                                <p> 
-                                <label>Usuário ativo?</label>
-                                    <label class="radio-inline">
-                                        <input type="radio" name="ativo" id="ativo" value="1" checked>Sim
-                                    </label>
-                                    <label class="radio-inline">
-                                        <input type="radio" name="ativo" id="ativo" value="0">Não
-                                    </label>
-                                </p>
-
-                                <p class="signin button"> 
->>>>>>> 40876b9b4106675de479af86b001c711ea62dc1a
-                                    <input type="submit" value="Cadastrar"/> 
-                                </p>-->
-
-                                <!-- <p class="change_link">
-                                    Terminou?
-                                    <a href="#toregister" class="to_register">Cadastrar produto</a>
-                                </p> -->
-                            </form>
-                        </div>
-						
-                    </div>
-                </div>  
-            </section>                                </div>
-                                <!-- /.col-lg-4 (nested) -->
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Nome</th>
+                                            <th>Cargo</th>
+                                            <th>Nome de usuário</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Raniel</td>
+                                            <td>Administrador</td>
+                                            <td>raniel</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Clóvis</td>
+                                            <td>Administrador</td>
+                                            <td>clovis</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
-                            <!-- /.row -->
+                            <!-- /.table-responsive -->
                         </div>
                         <!-- /.panel-body -->
                     </div>
+                    <!-- /.panel -->
                 </div>
-                
             </div>
-            <!-- /.row -->
         </div>
-        <!-- /#page-wrapper -->
-
     </div>
     <!-- /#wrapper -->
 

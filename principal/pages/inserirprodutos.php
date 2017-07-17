@@ -78,7 +78,9 @@ else {
     	if($mysqli->query($sql) === TRUE)
     	{
 			echo "<script>alert('Produto cadastrado.');window.location='http://localhost/principal/pages/exibirprodutos.php';</script>";      
-		}
+		} else {
+            echo "<script>alert('Erro no cadastro do produto.');window.location='http://localhost/principal/pages/cadastrarprodutos.php';</script>";
+        }
     }    
 }
 ?>
