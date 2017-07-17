@@ -3,6 +3,8 @@ require "banco.php"; // connection to database
 	
 $originais = "SELECT * FROM produtos";
 $data = date('Y/m/d');
+//$data = date('2017/07/16');
+
 foreach ($dbo->query($originais) as $row) 
 {
     $nome = $row['nome'];

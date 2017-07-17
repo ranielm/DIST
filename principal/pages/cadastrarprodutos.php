@@ -15,7 +15,7 @@ if (!isset($_SESSION))
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>DIST - PRODUTO</title>
+    <title>DIST - PRODUTOS</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -154,7 +154,7 @@ if (!isset($_SESSION))
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="http://localhost/principal/pages/index.php"><i class="fa fa-dashboard fa-fw"></i> Principal</a>
+                            <a href="http://localhost/principal/pages/index.php"><i class="fa fa-home fa-fw"></i> Principal</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-users fa-fw"></i> Usuários<span class="fa arrow"></span></a>
@@ -180,6 +180,30 @@ if (!isset($_SESSION))
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+                        <li>
+                            <a href="#"><i class="fa fa-calendar fa-fw"></i> Relatórios<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="http://localhost/principal/pages/diatoexcelpdf.php">Escolha um dia</a>
+                                </li>
+                                <li>
+                                    <a href="http://localhost/principal/pages/intervalotoexcelpdf.php">Entre intervalos</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-industry fa-fw"></i> Setores<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="http://localhost/principal/pages/cadastrarsetores.php">Cadastrar setor</a>
+                                </li>
+                                <li>
+                                    <a href="http://localhost/principal/pages/exibirsetores.php">Exibir setores</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -196,7 +220,7 @@ if (!isset($_SESSION))
             </div>
 
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-6">
                     <!-- /.panel -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
