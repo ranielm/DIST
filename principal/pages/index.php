@@ -317,7 +317,7 @@ if (!isset($_SESSION))
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a href='exibirprodutos.php?exibprod=acbd'>
                             <div class="panel-footer">
                                 <span class="pull-left">Veja os detalhes</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -353,7 +353,7 @@ if (!isset($_SESSION))
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a href='exibirprodutos.php?exibprod=vcd'>
                             <div class="panel-footer">
                                 <span class="pull-left">Veja os detalhes</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

@@ -241,8 +241,16 @@ if (!isset($_SESSION))
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php 
-                                                $sql = "SELECT * FROM produtos;";
+                                                <?php
+                                                $exibprod = $_REQUEST['exibprod'];
+                                                if($exibprod == "acbd") {
+                                                    $sql = "SELECT * FROM produtos WHERE quantidadetotal < estoqueminimo;";
+                                                } else if($exibprod == "vcd") {
+                                                    $sql = "SELECT * FROM produtos WHERE datadeexpiracao <= NOW() + INTERVAL 15 DAY;";
+                                                } else {
+                                                    $sql = "SELECT * FROM produtos;";
+                                                }
+                                                
                                                 $result = mysqli_query($db, $sql);
                                                 $situacao = " ";
 
