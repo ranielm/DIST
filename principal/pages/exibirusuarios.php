@@ -3,6 +3,26 @@ if (!isset($_SESSION))
         {
             session_start();
         }
+        header('Content-Type: text/html; charset=utf-8');
+
+        //TESTA A CONEXÃO COM O BANCO
+        $host        = "localhost";
+        $dbname      = "dist";
+        $user        = "root";
+        $pass        = "banco";
+
+        $db = mysqli_connect($host, $user, $pass, $dbname);
+
+
+        if(!$db) 
+        {
+          echo "Erro : Indisponível para abrir a conexão com o banco de dados\n";
+        } else 
+        {
+          $nl=chr(10);
+          $texto = "Conexão com o banco de dados aberta com sucesso";
+          // echo nl2br($texto);
+        }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +35,7 @@ if (!isset($_SESSION))
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>DIST - PRINCIPAL</title>
+    <title>DIST - PRODUTO</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -154,12 +174,12 @@ if (!isset($_SESSION))
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="http://localhost/principal/pages/index.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="http://localhost/principal/pages/index.php"><i class="fa fa-dashboard fa-fw"></i> Principal</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-users fa-fw"></i> Usuários<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                                        <li>
+                                <li>
                                     <a href="http://localhost/principal/pages/cadastrarusuarios.php">Cadastrar usuário</a>
                                 </li>
                                 <li>
@@ -190,77 +210,70 @@ if (!isset($_SESSION))
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Cadastrar Usuários</h1>
+                    <h1 class="page-header">Lista de usuários</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
 
-            <div class="row">
-                <div class="col-lg-12">
+            <div class="col-lg-10">
                     <!-- /.panel -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-product-hunt fa-fw"></i> Insira aqui as informações do usuário
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Informações sobre os usuários
                             <div class="pull-right">
                             </div>
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-            <section>				
-                <div id="container_demo" >
-                    <!-- hidden anchor to stop jump http://www.css3create.com/Astuce-Empecher-le-scroll-avec-l-utilisation-de-target#wrap4  -->
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-hover table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Código</th>
+                                                    <th>Nome</th>
+                                                    <th>Email</th>
+                                                    <th>Telefone</th>
+                                                    <th>Tipo de usuário</th>
+                                                    <th>Cargo</th>
+                                                    <th>Ações</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php 
+                                                $sql = "SELECT * FROM usuarios;";
+                                                $result = mysqli_query($db, $sql);
 
-                    <a class="hiddenanchor" id="toregister"></a>
-                    <a class="hiddenanchor" id="tologin"></a>
+                                                if (mysqli_num_rows($result) > 0) {
+                                                // output data of each row
+                                                  while($row = mysqli_fetch_assoc($result)) {
+                                                    echo "<tr>
+                                                            <td>" . $row['id'] .  "</td>
+                                                            <td>" . $row['primeironome'] .  "</td>
+                                                            <td>" . $row['email'] .  "</td>
+                                                            <td>" . $row['telefone'] .  "</td>
+                                                            <td>" . $row['nivel'] .  "</td>
+                                                            <td>" . $row['cargo'] .  "</td>
+                                                            <td> 
+                                                            <a class='glyphicon glyphicon-edit' href='index.php'></a>
+                                                            <a class='glyphicon glyphicon-remove' href='index.php'> </a>
 
-                    <div id="wrapper">
-                        <div id="login" class="animate form">
-                            <form  action="cadastrarusuario.php" autocomplete="on"> 
-                                <!--REGISTERUSER-->
+                                                        </td>
+                                                        </tr>";
 
-                                 
-                                <p> 
-                                    <label for="usernamesignup" class="username" >Nome do usuário</label>
-                                    <input id="usernamesignup" name="username" required="required" type="text" placeholder="usuário" />
-                                </p>
-                                <p> 
-                                    <label for="emailsignup" class="mail"  > Informe o email</label>
-                                    <input id="emailsignup" name="mail" required="required" type="email" placeholder="email@servidoremail.com"/> 
-                                </p>
-                                <p> 
-                                    <label for="role" class="role"  > Informe o cargo</label>
-                                    <input id="role" name="role" required="required" type="text" placeholder="função"/> 
-                                </p>
-                                <p> 
-                                    <label for="phone" class="phone" >Digite o número do telefone do usuário</label>
-                                    <input id="phone" name="phone" required="required" type="tel" placeholder="0349..."/>
-                                </p>
-                                <p> 
-                                    <label for="type" class="usertype"  > Informe o tipo do usuário</label>
-                                    <input id="type" name="usertype" required="required" type="number" placeholder="0,1..."/> 
-                                </p>
-                                <p> 
-                                    <label for="passwordsignup" class="youpasswd" >Utilize uma senha forte </label>
-                                    <input id="passwordsignup" name="password" required="required" type="password" placeholder="ex. X8df!90EO"/>
-                                </p>
-                                <p> 
-                                    <label for="passwordsignup_confirm" class="youpasswd" >Por favor confirme a senha </label>
-                                    <input id="passwordsignup_confirm" name="password_confirm" required="required" type="password" placeholder="ex. X8df!90EO"/>
-                                </p>
-                                <p class="signin button"> 
-                                    <input type="submit" value="Cadastrar"/> 
-                                </p>
+                                              }
+                                          } else {
+                                              echo "Nenhum produto cadastrado.";
+                                          }
 
-                                <!-- <p class="change_link">
-                                    Terminou?
-                                    <a href="#toregister" class="to_register">Cadastrar produto</a>
-                                </p> -->
-                            </form>
-                        </div>
-						
-                    </div>
-                </div>  
-            </section>                                </div>
+
+                                          ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- /.table-responsive -->
+                                </div>
                                 <!-- /.col-lg-4 (nested) -->
                             </div>
                             <!-- /.row -->
@@ -268,6 +281,10 @@ if (!isset($_SESSION))
                         <!-- /.panel-body -->
                     </div>
                 </div>
+
+
+            
+        </div>
                 
             </div>
             <!-- /.row -->

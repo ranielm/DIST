@@ -29,13 +29,13 @@ if (!isset($_SESSION))
 
 <head>
 
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>DIST - PRINCIPAL</title>
+    <title>DIST - PRODUTO</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -174,7 +174,7 @@ if (!isset($_SESSION))
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="http://localhost/principal/pages/index.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="http://localhost/principal/pages/index.php"><i class="fa fa-dashboard fa-fw"></i> Principal</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-users fa-fw"></i> Usuários<span class="fa arrow"></span></a>
@@ -210,184 +210,17 @@ if (!isset($_SESSION))
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Shopping Park</h1>
+                    <h1 class="page-header">Lista de Produtos</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
-            <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-users fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <?php 
-                                        $sql = "SELECT * FROM usuarios;";
-                                        $result = mysqli_query($db, $sql);
 
-                                        if (mysqli_num_rows($result) > 0) 
-                                        {
-                                            // output data of each row
-                                            while($row = mysqli_fetch_assoc($result)) 
-                                            {
-                                                $totalusers = $totalusers + 1;
-                                            }
-                                        } else {
-                                                    echo "Nenhum produto cadastrado.";
-                                        }
-                                    ?>
-                                    <div class="huge"><?php echo $totalusers; ?></div>
-                                    <div>Usuários cadastrados</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="exibirusuarios.php">
-                            <div class="panel-footer">
-                                <span class="pull-left">Veja os detalhes</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-green">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-product-hunt fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <?php 
-                                        $sql = "SELECT quantidadetotal FROM produtos;";
-                                        $result = mysqli_query($db, $sql);
-
-                                        if (mysqli_num_rows($result) > 0) 
-                                        {
-                                            // output data of each row
-                                            while($row = mysqli_fetch_assoc($result)) 
-                                            {
-                                                $total = $row['quantidadetotal'] + $total;
-                                            }
-                                        } else {
-                                                    echo "Nenhum produto cadastrado.";
-                                        }
-                                    ?>
-                                    <div class="huge"><?php echo $total; ?></div>
-                                    <div> Produtos armazenados</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="exibirprodutos.php">
-                            <div class="panel-footer">
-                                <span class="pull-left">Veja os detalhes</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <?php
-                $totalacab = 0;
-                $sql = "SELECT * FROM produtos WHERE quantidadetotal < estoqueminimo;";
-                $result = mysqli_query($db, $sql);
-
-                if (mysqli_num_rows($result) > 0) 
-                {
-                                            // output data of each row
-                    while($row = mysqli_fetch_assoc($result)) 
-                    {
-                        $totalacab = $totalacab + 1;
-                    }
-                }
-                ?>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-yellow">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-sort-amount-desc fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge"><?php echo $totalacab; ?></div>
-                                    <div>Produto(s) acabando</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">Veja os detalhes</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-red">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-calendar-times-o fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <?php
-                                        $totalvcndo = 0;
-                                        $sql = "SELECT * FROM produtos WHERE datadeexpiracao <= NOW() + INTERVAL 15 DAY;";
-                                        $result = mysqli_query($db, $sql);
-
-                                        if (mysqli_num_rows($result) > 0) 
-                                        {
-                                            // output data of each row
-                                            while($row = mysqli_fetch_assoc($result)) 
-                                            {
-                                                $totalvcndo = $totalvcndo + 1;
-                                            }
-                                        } 
-                                    ?>
-                                    <div class="huge"><?php echo $totalvcndo; ?></div>
-                                    <div>Produto(s) vencendo</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">Veja os detalhes</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-8">
+            <div class="col-lg-10">
                     <!-- /.panel -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <i class="fa fa-bar-chart-o fa-fw"></i> Informações sobre os produtos
                             <div class="pull-right">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                                        Ações
-                                        <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu pull-right" role="menu">
-                                        <li><a href="#">Ver últimos inseridos</a>
-                                        </li>
-                                        <li><a href="#">Mais próximos do vencimento</a>
-                                        </li>
-                                        <li><a href="#">Registrar empréstimo</a>
-                                        </li>
-                                        <li class="divider"></li>
-                                        <li><a href="#">Ver todos</a>
-                                        </li>
-                                    </ul>
-                                </div>
                             </div>
                         </div>
                         <!-- /.panel-heading -->
@@ -404,25 +237,36 @@ if (!isset($_SESSION))
                                                     <th>Hora</th>
                                                     <th>Inserções no dia</th>
                                                     <th>Quantidade</th>
+                                                    <th>Ações</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php 
                                                 $sql = "SELECT * FROM produtos;";
                                                 $result = mysqli_query($db, $sql);
+                                                $situacao = " ";
 
                                                 if (mysqli_num_rows($result) > 0) {
                                                 // output data of each row
                                                   while($row = mysqli_fetch_assoc($result)) {
-                                                    echo "<tr>
+                                                    if( $row['datadeexpiracao'] < date('Y-m-d H:i:s', strtotime($stop_date . ' +15 day')) )  {
+                                                        $situacao = "class='danger'";
+                                                    } else if( $row['quantidadetotal'] < $row['estoqueminimo'] ) {
+                                                        $situacao = "class='warning'";
+                                                    }
+                                                    echo "<tr $situacao>
                                                             <td>" . $row['id'] .  "</td>
                                                             <td>" . $row['nome'] .  "</td>
                                                             <td>" . date('d/m/Y', strtotime($row['reg_date'])) .  "</td>
                                                             <td>" . date('h:i A', strtotime($row['reg_date'])) .  "</td>
                                                             <td>" . $row['insercoesnodia'] .  "</td>
                                                             <td>" . $row['quantidadetotal'] .  "</td>
+                                                            <td> 
+                                                            <a class='glyphicon glyphicon-edit' href='index.php'> </a>
+                                                            <a class='glyphicon glyphicon-remove'  href='index.php'> </a>
+                                                            <a class='glyphicon glyphicon-transfer'  href='index.php'> </a>
                                                         </tr>";
-
+                                                        $situacao = " ";
                                               }
                                           } else {
                                               echo "Nenhum produto cadastrado.";
@@ -442,48 +286,11 @@ if (!isset($_SESSION))
                         <!-- /.panel-body -->
                     </div>
                 </div>
-                <!-- /.col-lg-8 -->
-                <div class="col-lg-4">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-bell fa-fw"></i> Painel de notificações
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <div class="list-group">
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-tasks fa-fw"></i> Quantidade atualizada
-                                    <span class="pull-right text-muted small"><em>13:26 PM</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-upload fa-fw"></i> Empréstimo realizado
-                                    <span class="pull-right text-muted small"><em>11:32 AM</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-warning fa-fw"></i> Renove o produto "cola"
-                                    <span class="pull-right text-muted small"><em>10:57 AM</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-shopping-cart fa-fw"></i> Novo produto cadastrado
-                                    <span class="pull-right text-muted small"><em>9:49 AM</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-money fa-fw"></i> Preço alterado
-                                    <span class="pull-right text-muted small"><em>Ontem</em>
-                                    </span>
-                                </a>
-                            </div>
-                            <!-- /.list-group -->
-                            <a href="#" class="btn btn-default btn-block">Gerar relatório</a>
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                </div>
-                <!-- /.col-lg-4 -->
+
+
+            
+        </div>
+                
             </div>
             <!-- /.row -->
         </div>

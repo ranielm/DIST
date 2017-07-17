@@ -64,7 +64,7 @@ else {
 
 		if($mysqli->query($atualiza) === TRUE)
     	{
-			echo "<script>alert('$nome atualizado.');window.location='http://localhost/principal/pages/cadastrarprodutos.php';</script>";      
+			echo "<script>alert('$nome atualizado.');window.location='http://localhost/principal/pages/exibirprodutos.php';</script>";      
 		}
     	//echo $row["id"];
 		//echo "<script>alert('Nome do produto já cadastrado.');window.location='http://localhost/principal/pages/cadastrarprodutos.php';</script>";      
@@ -77,7 +77,7 @@ else {
     	$sql = "INSERT INTO produtos (nome, quantidadetotal, alertadeexpiracao, datadeexpiracao, ehperecivel, fabricante, estoqueminimo, setor, tipo, descricao, lote, insercoestotais, remocoestotais, insercoesnodia, remocoesnodia, emprestado) VALUES ('$nome', '$quantidadetotal', '$alertadeexpiracao', '$datadeexpiracao', '$ehperecivel', '$fabricante', '$estoqueminimo', '$setor', '$tipo', '$descricao', '1', '1', '0', '1', '0', '0')";
     	if($mysqli->query($sql) === TRUE)
     	{
-			echo "<script>alert('Produto cadastrado.');window.location='http://localhost/principal/pages/cadastrarprodutos.php';</script>";      
+			echo "<script>alert('Produto cadastrado.');window.location='http://localhost/principal/pages/exibirprodutos.php';</script>";      
 		}
     }    
 }
