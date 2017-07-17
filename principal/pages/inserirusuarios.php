@@ -52,7 +52,7 @@ if ($mysqli->connect_error)
     }
 
 	//print_r($resultado);
-    if(isset($idusu) && $erro == 0)
+    if(isset($id) && $erro == 0)
     {
         /*$buscanome = "SELECT * FROM usuarios WHERE id = '$idusu'";
         $resultado = $mysqli->query($buscanome);
