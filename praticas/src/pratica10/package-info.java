@@ -2,7 +2,11 @@
  * 
  */
 /**
- * @author root
+ * @author RANIEL E AMANDA
+ *	SEGUNDO ENVIO DAS PRÁTICAS DE POO2
+ *	PROFESSOR HENRIQUE, BCC - UFU, 2017-01
+ *	PRÁTICA 10 - PADRÃO TEMPLATE METHOD
+ *	PROBLEMA - ABRIR 3 TIPOS DE CONTAS
  *
  */
 package pratica10;

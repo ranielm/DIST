@@ -2,7 +2,11 @@
  * 
  */
 /**
- * @author root
+ * @author RANIEL E AMANDA
+ *	SEGUNDO ENVIO DAS PRÁTICAS DE POO2
+ *	PROFESSOR HENRIQUE, BCC - UFU, 2017-01
+ *	PRÁTICA 12 - PADRÃO STATE
+ *	PROBLEMA - PERSONAGEM MÁRIO E AS ALTERAÇÕES EM SEUS ESTADOS
  *
  */
 package pratica12;
