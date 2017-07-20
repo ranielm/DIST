@@ -11,13 +11,16 @@ package pratica7;
  * @author raniel
  */
 public class MoedaCorrente {
-        private int amount;
-	
+    private int amount;
+    
+    int vetor[] = new int[7];
+    
 	public MoedaCorrente(int amt){
 		this.amount=amt;
 	}
 	
 	public int getAmount(){
+		vetor[0] = this.amount;
 		return this.amount;
 	}    
 }

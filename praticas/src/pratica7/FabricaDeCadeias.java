@@ -9,8 +9,9 @@ package pratica7;
  *
  * @author raniel
  */
-public interface CadeiaDeDistribuicao {
-    void setNextChain(CadeiaDeDistribuicao nextChain);
+public interface FabricaDeCadeias {
+    void setNextChain(FabricaDeCadeias nextChain);
 	
     void dispense(MoedaCorrente cur);
+ 
 }

@@ -13,19 +13,20 @@ import java.util.Scanner;
 
 public class CadeiaATM {
 
-	private CadeiaDeDistribuicao c1;
+	private FabricaDeCadeias c1;
 
 	public CadeiaATM() {
-		// initialize the chain
+		// inicializa a cadeia
 		this.c1 = new Distribuir100();
-		CadeiaDeDistribuicao c2 = new Distribuir50();
-		CadeiaDeDistribuicao c3 = new Distribuir20();
-        CadeiaDeDistribuicao c4 = new Distribuir10();
-        CadeiaDeDistribuicao c5 = new Distribuir05();
-		CadeiaDeDistribuicao c6 = new Distribuir02();
-        CadeiaDeDistribuicao c7 = new Distribuir01();
+		FabricaDeCadeias c2 = new Distribuir50();
+		FabricaDeCadeias c3 = new Distribuir20();
+        FabricaDeCadeias c4 = new Distribuir10();
+        FabricaDeCadeias c5 = new Distribuir05();
+		FabricaDeCadeias c6 = new Distribuir02();
+        FabricaDeCadeias c7 = new Distribuir01();
                 
-                // set the chain of responsibility
+        // seta a cadeia de responsabilidades
+        
 		c1.setNextChain(c2);
 		c2.setNextChain(c3);
         c3.setNextChain(c4);

@@ -5,12 +5,12 @@
  */
 package pratica7;
 
-public class Distribuir02 implements CadeiaDeDistribuicao {
+public class Distribuir02 implements FabricaDeCadeias {
 
-	private CadeiaDeDistribuicao chain;
+	private FabricaDeCadeias chain;
 	
 	@Override
-	public void setNextChain(CadeiaDeDistribuicao nextChain) {
+	public void setNextChain(FabricaDeCadeias nextChain) {
 		this.chain=nextChain;
 	}
 

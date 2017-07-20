@@ -9,12 +9,12 @@ package pratica7;
  *
  * @author raniel
  */
-public class Distribuir20 implements CadeiaDeDistribuicao{
+public class Distribuir20 implements FabricaDeCadeias{
 
-	private CadeiaDeDistribuicao chain;
+	private FabricaDeCadeias chain;
 	
 	@Override
-	public void setNextChain(CadeiaDeDistribuicao nextChain) {
+	public void setNextChain(FabricaDeCadeias nextChain) {
 		this.chain=nextChain;
 	}
 
