@@ -1,4 +1,4 @@
-package pratica06;
+package pratica05;
 
 public class Conta {
 

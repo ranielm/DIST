@@ -9,4 +9,4 @@
  *	PROBLEMA - CRIAR UMA FÁBRICA DE CADEIAS NA PRÁTICA 04, NÃO MOSTRANDO AS CÉDULAS CUJA QUANTIDADE É 0
  *
  */
-package pratica07;
+package pratica7;

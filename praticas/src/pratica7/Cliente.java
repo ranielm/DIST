@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pratica07;
+package pratica7;
 
 /**
  *
@@ -11,11 +11,11 @@ package pratica07;
  */
 import java.util.Scanner;
 
-public class CadeiaATM {
+public class Cliente {
 
 	private FabricaDeCadeias c1;
 
-	public CadeiaATM() {
+	public Cliente() {
 		// inicializa a cadeia
 		this.c1 = new Distribuir100();
 		FabricaDeCadeias c2 = new Distribuir50();
@@ -36,7 +36,7 @@ public class CadeiaATM {
 	}
 
 	public static void main(String[] args) {
-		CadeiaATM atmDispenser = new CadeiaATM();
+		Cliente atmDispenser = new Cliente();
 		while (true) {
 			int amount = 0;
 			System.out.println("Enter amount to dispense");
