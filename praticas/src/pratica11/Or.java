@@ -1,3 +1,5 @@
+package pratica11;
+
 public class Or extends Operador{
 	public Or(ExpressaoLogica op1, ExpressaoLogica op2){
 		super(op1,op2);	

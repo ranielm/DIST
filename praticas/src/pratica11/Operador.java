@@ -1,3 +1,5 @@
+package pratica11;
+
 public abstract class Operador implements ExpressaoLogica{
 	private ExpressaoLogica el1;
 	private ExpressaoLogica el2;

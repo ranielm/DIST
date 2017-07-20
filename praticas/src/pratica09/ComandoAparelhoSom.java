@@ -1,4 +1,4 @@
-package controle.remoto;
+package pratica09;
 
 public class ComandoAparelhoSom implements Comando{
     AparelhoSom aparelhoSom;

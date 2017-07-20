@@ -1,3 +1,5 @@
+package pratica11;
+
 public class Xor extends Operador{
 	public Xor(ExpressaoLogica op1, ExpressaoLogica op2){
 		super(op1,op2);	

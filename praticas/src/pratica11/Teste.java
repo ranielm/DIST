@@ -1,3 +1,5 @@
+package pratica11;
+
 public class Teste{
 	public static void main(String args[]){
 		ExpressaoLogica op1 = new Operando(true);

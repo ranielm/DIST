@@ -1,4 +1,4 @@
-package controle.remoto;
+package pratica09;
 
 public class Macro {
     public static void main(String[] args){

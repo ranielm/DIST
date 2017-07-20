@@ -1,4 +1,4 @@
-package controle.remoto;
+package pratica09;
 
 public interface Comando {
     public void executar();

@@ -1,3 +1,5 @@
+package pratica11;
+
 public class Operando implements ExpressaoLogica{
 	private boolean conteudo;
 	

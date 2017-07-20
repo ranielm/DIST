@@ -1,3 +1,5 @@
+package pratica11;
+
 public class Not extends Operador{
 	public Not(ExpressaoLogica op1){
 		super(op1,op1);	
