@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pratica7;
+package pratica07;
 
-public class Distribuir05 implements FabricaDeCadeias {
+public class Distribuir01 implements FabricaDeCadeias {
 
 	private FabricaDeCadeias chain;
 	
@@ -16,10 +16,10 @@ public class Distribuir05 implements FabricaDeCadeias {
 
 	@Override
 	public void dispense(MoedaCorrente cur) {
-		if(cur.getAmount() >= 5){
-			int num = cur.getAmount()/5;
-			int remainder = cur.getAmount() % 5;
-			System.out.println("Dispensing "+num+" 5$ note");
+            if(cur.getAmount() >= 1){
+			int num = cur.getAmount()/1;
+			int remainder = cur.getAmount() % 1;
+			System.out.println("Dispensing "+num+" 1$ note");
 			if(remainder !=0) this.chain.dispense(new MoedaCorrente(remainder));
 		}else{
 			this.chain.dispense(cur);
