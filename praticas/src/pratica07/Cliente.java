@@ -1,14 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/* @author Raniel Mendonça - 11321BCC024 e Amanda Souza - 11421BCC036 */
+
 package pratica7;
 
-/**
- *
- * @author raniel
- */
 import java.util.Scanner;
 
 public class Cliente {

@@ -1,3 +1,5 @@
+/* @author Raniel Mendonça - 11321BCC024 e Amanda Souza - 11421BCC036 */
+
 package pratica05;
 
 import java.util.Calendar;
@@ -5,7 +7,7 @@ import java.util.Date;
 import java.util.Locale;
 
 public class Cliente {
-
+	 
 	public static void main(String[] args) {
 		
 		Locale local = new Locale("en", "US");

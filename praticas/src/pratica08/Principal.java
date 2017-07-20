@@ -1,9 +1,7 @@
+/* @author Raniel Mendonça - 11321BCC024 e Amanda Souza - 11421BCC036 */
+
 package pratica08;
 
-/**
- *
- * @author raniel
- */
 public class Principal {
 	
     public static void main(String[] args) 

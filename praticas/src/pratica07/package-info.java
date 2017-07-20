@@ -2,7 +2,7 @@
  * 
  */
 /**
- * @author RANIEL E AMANDA
+ * @author Raniel Mendonça - 11321BCC024 e Amanda Souza - 11421BCC036
  * @version SEGUNDO ENVIO DAS PRÁTICAS DE POO2
  *	PROFESSOR HENRIQUE, BCC - UFU, 2017-01
  *	PRÁTICA 7 - PADRÃO FACTORY METHOD
