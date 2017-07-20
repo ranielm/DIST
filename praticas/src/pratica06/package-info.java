@@ -3,7 +3,6 @@
  */
 /**
  * @author Raniel e Amanda
- * @version 
  *
  */
-package pratica08;
+package pratica06;
