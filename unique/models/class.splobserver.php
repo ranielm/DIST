@@ -7,6 +7,7 @@ class Post implements \SplSubject{
     public $content;
     public $author;
     public $observers = array();
+    public $lida;
 
     public function __construct($id, $title, $content, $author) {
       $this->id      = $id;
@@ -86,10 +87,11 @@ class Reader implements SplObserver{
 
     public function update(\SplSubject $subject) {
         $subject->getContent();
+        
     }
 }
 
-$post = new Post('Windows');
+$post = new Post('Teste', 'Conteudo', 'Diego');
 
 $allen = new Reader('Allen');
 $jim = new Reader('Jim');
@@ -104,6 +106,6 @@ $post->attach($linda);
 $post->detach($linda);
 
 //set break outs
-$post->breakOutNews('Windows e Baidu juntos!');
+$post->breakOutNews('Teste breakout');
 
 ?>
