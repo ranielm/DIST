@@ -1,5 +1,7 @@
 <?php
   class Db {
+
+    // SINGLETON
     private static $instance = NULL;
 
     private function __construct() {}

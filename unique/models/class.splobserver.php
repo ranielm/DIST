@@ -1,5 +1,5 @@
 <?php
-  class Post implements \SplSubject{
+class Post implements \SplSubject{
     // we define 3 attributes
     // they are public so that we can access them using $post->author directly
     public $id;
@@ -40,6 +40,7 @@
       return new Post($post['id'], $post['title'], $post['content'], $post['author']);
     }
 
+    //OBSERVER 
     //add observer
     public function attach(\SplObserver $observer) {
         $this->observers[] = $observer;
@@ -71,7 +72,7 @@
         }
     }
 }
-  class Reader implements SplObserver{
+class Reader implements SplObserver{
     
     private $name;
     
@@ -79,8 +80,12 @@
         $this->name = $name;
     }
     
-    public function update(\SplSubject $subject) {
+    /*public function update(\SplSubject $subject) {
         echo $this->name.' is reading breakout news <b>'.$subject->getContent().'</b><br>';
+    }*/
+
+    public function update(\SplSubject $subject) {
+        $subject->getContent();
     }
 }
 
