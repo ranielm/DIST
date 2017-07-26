@@ -7,7 +7,7 @@
     public $content;
     public $author;
 
-    public function __construct($id, $author, $content) {
+    public function __construct($id, $title, $content, $author) {
       $this->id      = $id;
       $this->title   = $title;
       $this->content = $content;
@@ -21,7 +21,7 @@
 
       // we create a list of Post objects from the database results
       foreach($req->fetchAll() as $post) {
-        $list[] = new Post($post['id'], $post['author'], $post['title'], $post['content'], $post['author']);
+        $list[] = new Post($post['id'], $post['title'], $post['content'], $post['author']);
       }
 
       return $list;
@@ -36,7 +36,7 @@
       $req->execute(array('id' => $id));
       $post = $req->fetch();
 
-      return new Post($post['id'], $post['author'], $post['title'], $post['content'], $post['author']);
+      return new Post($post['id'], $post['title'], $post['content'], $post['author']);
     }
   }
 ?>
