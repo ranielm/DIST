@@ -40,7 +40,7 @@ class Post implements \SplSubject{
 
       return new Post($post['id'], $post['title'], $post['content'], $post['author']);
     }
-
+    
     //OBSERVER 
     //add observer
     public function attach(\SplObserver $observer) {

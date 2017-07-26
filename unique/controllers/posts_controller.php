@@ -16,5 +16,11 @@
       $post = Post::find($_GET['id']);
       require_once('views/posts/show.php');
     }
+
+    public function inserir() {
+      // we store all the posts in a variable
+      $posts = Post::inserir();
+      require_once('models/criarpostagem.php');
+    }
   }
 ?>

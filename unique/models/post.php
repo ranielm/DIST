@@ -1,5 +1,5 @@
 <?php
-  class Post {
+class Post {
     // we define 3 attributes
     // they are public so that we can access them using $post->author directly
     public $id;
@@ -37,6 +37,24 @@
       $post = $req->fetch();
 
       return new Post($post['id'], $post['title'], $post['content'], $post['author']);
+    }
+  
+    $title1 = "Titulo";
+    $content1 = "Conteudo";
+    $author1 = "Author";
+    
+    public static function inserir($title1, $content1, $author1) {
+      $db = Db::getInstance();
+      // we make sure $id is an integer
+      $title1 = intval($title1);
+      $content1 = intval($content1);
+      $author1 = intval($author1);
+      $req = $db->query('INSERT INTO posts (title, content, author) VALUES (:title1, :content1, :author1)');
+      // the query was prepared, now we replace :id with our actual $id value
+      //$req->execute(array('id' => $id));
+      //$post = $req->fetch();
+
+      //return new Post($post['id'], $post['title'], $post['content'], $post['author']);
     }
   }
 ?>
