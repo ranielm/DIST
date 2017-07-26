@@ -4,8 +4,9 @@
   </head>
   <body>
     <header>
-      <a href='/php_mvc_blog'>Home</a>
-      <a href='?controller=posts&action=index'>Posts</a>
+      <a href='/unique'>Início</a>
+      <a href='?controller=posts&action=index'>Notícias</a>
+      <a href='?controller=users&action=index'>Usuários</a>
     </header>
 
     <?php require_once('routes.php'); ?>
