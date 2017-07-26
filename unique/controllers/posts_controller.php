@@ -20,7 +20,7 @@
     public function enviardados() {
       // we store all the posts in a variable
       Post::inserir();
-      require_once('views/posts/show.php');
+      $this->index();
     }
   }
 ?>
