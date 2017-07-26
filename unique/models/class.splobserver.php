@@ -81,14 +81,14 @@ class Reader implements SplObserver{
         $this->name = $name;
     }
     
-    /*public function update(\SplSubject $subject) {
-        echo $this->name.' is reading breakout news <b>'.$subject->getContent().'</b><br>';
-    }*/
-
     public function update(\SplSubject $subject) {
+        echo $this->name.' is reading breakout news <b>'.$subject->getContent().'</b><br>';
+    }
+
+    /*public function update(\SplSubject $subject) {
         $subject->getContent();
         
-    }
+    }*/
 }
 
 $post = new Post('Teste', 'Conteudo', 'Diego');
