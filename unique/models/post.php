@@ -39,7 +39,7 @@ class Post {
       return new Post($post['id'], $post['title'], $post['content'], $post['author']);
     }
     
-    public static function inserir($title, $content, $author) {
+    public static function inserir() {
       $db = Db::getInstance();
       // we make sure $id is an integer
       $title = "titulo"; 
@@ -49,8 +49,9 @@ class Post {
       // the query was prepared, now we replace :id with our actual $id value
       //$req->execute(array('id' => $id));
       //$post = $req->fetch();
-
+    inserir();
       //return new Post($post['id'], $post['title'], $post['content'], $post['author']);
     }
+    
   }
 ?>

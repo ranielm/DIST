@@ -20,7 +20,7 @@
     public function inserir() {
       // we store all the posts in a variable
       $posts = Post::inserir();
-      require_once('models/criarpostagem.php');
+      require_once('models/post.php');
     }
   }
 ?>
