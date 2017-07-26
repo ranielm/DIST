@@ -6,10 +6,10 @@
       case 'pages':
         $controller = new PagesController();
       break;
-      case 'posts':
+      case 'noticias':
         // we need the model to query the database later in the controller
-        require_once('models/post.php');
-        $controller = new PostsController();
+        require_once('models/noticias.php');
+        $controller = new NoticiasController();
       break;
     }
 
