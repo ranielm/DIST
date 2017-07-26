@@ -3,15 +3,15 @@
     // we define 3 attributes
     // they are public so that we can access them using $post->author directly
     public $id;
-    public $author;
-    public $content;
     public $title;
+    public $content;
+    public $author;
 
     public function __construct($id, $author, $content) {
       $this->id      = $id;
-      $this->author  = $author;
+      $this->title   = $title;
       $this->content = $content;
-      $this->content = $title;
+      $this->author  = $author;
     }
 
     public static function all() {
@@ -21,7 +21,7 @@
 
       // we create a list of Post objects from the database results
       foreach($req->fetchAll() as $post) {
-        $list[] = new Post($post['id'], $post['author'], $post['content'], $post['title']);
+        $list[] = new Post($post['id'], $post['title'], $post['content'], $post['author']);
       }
 
       return $list;
@@ -36,7 +36,7 @@
       $req->execute(array('id' => $id));
       $post = $req->fetch();
 
-      return new Post($post['id'], $post['author'], $post['content'], $post['title']);
+      return new Post($post['id'], $post['title'], $post['content'], $post['author']);
     }
   }
 ?>

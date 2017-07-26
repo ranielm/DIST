@@ -1,3 +1,3 @@
-<p>Hello there <?php echo $first_name . ' ' . $last_name; ?>!<p>
+<p>Bom dia <?php echo $title1 . ' ' . $title2; ?>!<p>
 
-<p>You successfully landed on the home page. Congrats!</p>
+<p>Bem vindo a Unique, seu canal de tecnologia!</p>
