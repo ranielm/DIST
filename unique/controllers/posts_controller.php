@@ -17,7 +17,7 @@
       require_once('views/posts/show.php');
     }
 
-    public function inserir() {
+    public function enviardados() {
       // we store all the posts in a variable
       $posts = Post::inserir();
       require_once('models/post.php');
