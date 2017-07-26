@@ -19,7 +19,7 @@
 
       // we create a list of Post objects from the database results
       foreach($req->fetchAll() as $noticias) {
-        $list[] = new Post($noticias['id'], $noticias['autor'], $noticias['conteudo']);
+        $list[] = new Noticias($noticias['id'], $noticias['autor'], $noticias['conteudo']);
       }
 
       return $list;
@@ -34,7 +34,7 @@
       $req->execute(array('id' => $id));
       $noticias = $req->fetch();
 
-      return new Post($noticias['id'], $noticias['autor'], $noticias['conteudo']);
+      return new Noticias($noticias['id'], $noticias['autor'], $noticias['conteudo']);
     }
   }
 ?>
