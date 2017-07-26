@@ -1,3 +1,3 @@
-<p>Oops, this is the error page.</p>
+<p>Parece que ocorreu um erro nessa página.</p>
 
-<p>Looks like something went wrong.</p>
+<p>Provavelmente ela não existe ou não foi bem definida.</p>
