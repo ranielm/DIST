@@ -19,8 +19,8 @@
 
     public function enviardados() {
       // we store all the posts in a variable
-      $posts = Post::inserir();
-      require_once('models/post.php');
+      Post::inserir();
+      //require_once('models/post.php');
     }
   }
 ?>

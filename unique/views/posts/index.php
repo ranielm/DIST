@@ -1,6 +1,6 @@
 <p>Lista de todas as notícias:</p>
 
-<a href='?controller=posts&action=enviardados&id=<?php echo "Teste"; ?>'>Enviar</a>
+<a href='?controller=posts&action=enviardados'>Enviar</a>
 
 <?php foreach($posts as $post) { ?>
   <p>
