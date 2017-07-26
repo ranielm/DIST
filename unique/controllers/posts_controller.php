@@ -20,7 +20,7 @@
     public function enviardados() {
       // we store all the posts in a variable
       Post::inserir();
-      //require_once('models/post.php');
+      require_once('models/post.php');
     }
   }
 ?>
