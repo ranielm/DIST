@@ -64,10 +64,11 @@ class Post {
       //$_SESSION['id'] = $id;
       $id = intval($id);
       $memento = new Caretaker;
-      $memento->addMemento($id);
+      $memento->addMemento();
       $db = Db::getInstance();
-      $delete = "DELETE FROM posts WHERE id = '$id'";
-      $db->query($delete);
+      $req = $db->query("DELETE FROM posts WHERE id = :id");      
+      //$delete = "'";
+      //$db->query($delete);
       return;
     }
 
@@ -86,8 +87,8 @@ class Post {
       
     public function addMemento($id)
     {
-      //$id = $_SESSION['id'];
-      $id = intval($id);
+      $id = $_SESSION['id'];
+      //$id = intval($id);
       $db = Db::getInstance();
       $originais = "SELECT * FROM posts WHERE id = '$id'";
       foreach ($db->query($originais) as $row) 

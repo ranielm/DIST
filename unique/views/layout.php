@@ -12,7 +12,6 @@
     <?php require_once('routes.php'); ?>
 
     <footer>
-      <a href='?controller=posts&action=voltarmemento'>Desfazer remoção</a>
       Unique
     </footer>
   <body>
