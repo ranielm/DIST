@@ -4,10 +4,10 @@
   <p>
     <?php echo $post->title; ?>
     <a href='?controller=posts&action=show&id=<?php echo $post->id; ?>'>Ver conteúdo</a>
-    <a href='?controller=posts&action=excluirpost&id=<?php echo $post->id; ?>'>Excluir</a>
   </p>
 <?php } ?>
 
 <footer>
 <a href='?controller=posts&action=voltarmemento'>Desfazer remoção</a>
+<p>
 </footer>
