@@ -178,4 +178,98 @@ PRESSIONAR O BOTAO NO HTML DA VIEW, EXECUTA O SEGUINTE>
 $controle->pressionarBotao();
 */
 
+//STATE
+    abstract class State{
+        public $post;
+        public $limiteSuperior;
+        public $limiteInferior;
+        
+        public function __construct($post) {
+            $this->post = $post;
+            setLimites(); 
+        }
+        
+        public abstract function setLimites();
+        
+        public function incrementaCurtidas(){
+            verificarAlteracaoDeEstado();  
+        }
+        
+        public abstract function verificarAlteracaoDeEstado();
+    }
+
+  class StateBronze implements State{
+        
+        public function __construct($post) {
+            super($post);
+        }
+        
+        public function setLimites(){
+            $this->limiteInferior = 0;
+            $this->limiteSuperior = 30;
+        }
+        
+        //curtidas = curtidas do post.
+        public function incrementaCurtidas(){
+            $curtidas ++;//incremento das curtidas do post. 
+            verificarAlteracaoEstado();
+            //chow com cor vermelha
+        }
+        
+        public function verificarAlteracaoEstado(){
+            if($curtidas > $this->limiteSuperior)
+                $this->estado = new StatePrata($this->post);   
+        }
+    }
+
+    class StatePrata implements State{
+        
+        public function __construct($post) {
+            super($post);
+        }
+        
+        public function setLimites(){
+            $this->limiteInferior = 30;
+            $this->limiteSuperior = 80;
+        }
+        
+        //curtidas = curtidas do post.
+        public function incrementaCurtidas(){
+            $curtidas ++;//incremento das curtidas do post. 
+            verificarAlteracaoEstado();
+            //show com cor amarela
+        }
+        
+        public function verificarAlteracaoEstado(){
+            if($curtidas > $this->limiteSuperior)
+                $this->estado = new StateOuro($this->post);
+            else
+                if($curtidas < $this->limiteInferior) {
+                    $this->estado = new StateBronze ($this->post);
+            }   
+        }
+    }
+    class StateOuro implements State{
+            
+            public function __construct($post) {
+                super($post);
+            }
+            
+            public function setLimites(){
+                $this->limiteInferior = 80;
+                $this->limiteSuperior = 10000;
+            }
+            
+            //curtidas = curtidas do post.
+            public function incrementaCurtidas(){
+                $curtidas ++;//incremento das curtidas do post. 
+                verificarAlteracaoEstado();
+                //show com cor verde
+            }
+            
+            public function verificarAlteracaoEstado(){
+                if($curtidas < $this->limiteInferior)
+                    $this->estado = new StatePrata($this->post);
+            }
+        }           
 ?>
