@@ -73,6 +73,48 @@ class Post implements \SplSubject{
         }
     }
 }
+
+abstract class Comando{
+    abstract protected function executar();
+}
+
+class NaoExibir extends Comando{
+    private $post;
+    private $nome;
+    
+    public function __construct($post,$nome){
+        $this->post = $post;
+        $this->nome = $nome;
+    }
+    public function executar(){
+        $this->$post.detach($this->nome);
+    }
+}
+
+class ControleRemoto{
+    private $comando;
+    public function __construct(){};
+    public function setComando($comando){
+        $this->comando = $comando;
+    }
+    public function pressionarBotao(){
+        $this->comando.executar();
+    }
+}
+/*
+COMO DEVE SER UTILIZADO O PADRAO COMMAND > 
+
+$controle_remoto = new ControleRemoto();
+$post = new Post(...);
+$comando_naoexibir = new NaoExibir($post,'nome_do_usuario');
+$controle->setComando($comando_naoexibir);
+
+PRESSIONAR O BOTAO NO HTML DA VIEW, EXECUTA O SEGUINTE>
+$controle->pressionarBotao();
+
+*/
+
+
 class Reader implements SplObserver{
     
     private $name;
