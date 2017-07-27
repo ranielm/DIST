@@ -1,5 +1,5 @@
 <?Php
-$host_name = "10.15.109.203";
+$host_name = "localhost";
 $database = "dist"; // Change your database nae
 $username = "root";          // Your database user id 
 $password = "banco";          // Your password
