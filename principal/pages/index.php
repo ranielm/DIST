@@ -6,7 +6,7 @@ if (!isset($_SESSION))
         header('Content-Type: text/html; charset=utf-8');
 
         //TESTA A CONEXÃO COM O BANCO
-        $host        = "10.15.109.203";
+        $host        = "localhost";
         $dbname      = "dist";
         $user        = "root";
         $pass        = "banco";
