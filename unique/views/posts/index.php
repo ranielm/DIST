@@ -7,5 +7,3 @@
     <a href='?controller=posts&action=excluirpost&id=<?php echo $post->id; ?>'>Excluir</a>
   </p>
 <?php } ?>
-
-<a href='?controller=posts&action=voltarmemento'>Desfazer remoção</a>
