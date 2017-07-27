@@ -18,7 +18,7 @@ $diaformatado = $_SESSION['diaformatado'];*/
 //DATA DE HOJE
 //$hoje = date('d/m/Y');
 
-$dia1 = date('Y/m/d');
+$dia1 = date('2017/07/26');
 $dia2 = date('Y/m/d');
 
 //DIAS FORMATADOS E NÃO FORMATADOS
@@ -39,7 +39,7 @@ require('fpdf.php');
 $pdf = new FPDF(); 
 $pdf->AddPage();
 
-$data = date('d/m/Y');
+//$data = date('d/m/Y');
 $titulo = "Estado do banco em " . $dia1formatado;
 
 $pdf->SetTitle($titulo);
