@@ -27,7 +27,7 @@ $_SESSION['dia'] = $dia1;
 $dia1formatado = date('d/m/Y', strtotime($dia1));
 $dia2formatado = date('d/m/Y', strtotime($dia2));
 
-//DD/MM/YYYY?
+//DD/MM/YYYY?	
 //$intervalo = $dia1->diff($dia2);
 
 //YYYY/MM/DD
@@ -54,7 +54,8 @@ $pdf = new FPDF();
 
 for ($i=0; $i < $dias; $i++) { 
 	$dia1 = $_SESSION['dia'];
-	$ontem = date($dia1, time() - 60 * 60 * 24);
+	$ontem = date('d-m-Y', strtotime($dia1 .' -1 day'));
+
 
 	$count="select * from relatorios WHERE datadodia = '$dia1'"; // SQL to get 10 records 
 	//$linhas = $mysqli_num_rows($count);
