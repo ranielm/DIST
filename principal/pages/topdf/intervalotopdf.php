@@ -54,8 +54,6 @@ $pdf = new FPDF();
 
 for ($i=0; $i < $dias; $i++) { 
 	$dia1 = $_SESSION['dia'];
-	$ontem = date('d/m/Y', strtotime($dia1 .' -1 day'));
-
 
 	$count="select * from relatorios WHERE datadodia = '$dia1'"; // SQL to get 10 records 
 	//$linhas = $mysqli_num_rows($count);
@@ -98,6 +96,7 @@ for ($i=0; $i < $dias; $i++) {
 		$fill = !$fill; // to give alternate background fill  color to rows
 	}
 	/// end of records /// 
+	$_SESSION['dia'] = $ontem = date('d/m/Y', strtotime($dia1 .' -1 day'));
 }
 
 /*
