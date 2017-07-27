@@ -7,7 +7,7 @@ class Post implements \SplSubject{
     public $content;
     public $author;
     public $observers = array();
-    public $lida;
+    //public $lida;
     /// curtidas
     public function __construct($id, $title, $content, $author) { // receber numero de curtidas do banco
       $this->id      = $id;
@@ -74,6 +74,42 @@ class Post implements \SplSubject{
     }
 }
 
+class Reader implements SplObserver{
+    
+    private $name;
+    
+    public function __construct($name) {
+        $this->name = $name;
+    }
+    
+    public function update(\SplSubject $subject) {
+        echo $this->name.' is reading breakout news <b>'.$subject->getContent().'</b><br>';
+    }
+
+    /*public function update(\SplSubject $subject) {
+        $subject->getContent();
+        
+    }*/
+}
+
+$post = new Post('Create');
+
+$allen = new Reader('Allen');
+$jim = new Reader('Jim');
+$linda = new Reader('Linda');
+
+//add reader
+$post->attach($allen);
+$post->attach($jim);
+$post->attach($linda);
+
+//remove reader
+$post->detach($linda);
+
+//set break outs
+$post->breakOutNews('Novidades Unique');
+
+//COMANDO
 abstract class Comando{
     abstract protected function executar();
 }
@@ -93,7 +129,7 @@ class NaoExibir extends Comando{
 
 class ControleRemoto{
     private $comando;
-    public function __construct(){};
+    public function __construct(){}
     public function setComando($comando){
         $this->comando = $comando;
     }
@@ -115,39 +151,6 @@ $controle->pressionarBotao();
 */
 
 
-class Reader implements SplObserver{
-    
-    private $name;
-    
-    public function __construct($name) {
-        $this->name = $name;
-    }
-    
-    public function update(\SplSubject $subject) {
-        echo $this->name.' is reading breakout news <b>'.$subject->getContent().'</b><br>';
-    }
 
-    /*public function update(\SplSubject $subject) {
-        $subject->getContent();
-        
-    }*/
-}
-
-$post = new Post('Teste', 'Conteudo', 'Diego');
-
-$allen = new Reader('Allen');
-$jim = new Reader('Jim');
-$linda = new Reader('Linda');
-
-//add reader
-$post->attach($allen);
-$post->attach($jim);
-$post->attach($linda);
-
-//remove reader
-$post->detach($linda);
-
-//set break outs
-$post->breakOutNews('Teste breakout');
 
 ?>
