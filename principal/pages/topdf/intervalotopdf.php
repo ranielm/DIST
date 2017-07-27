@@ -94,6 +94,8 @@ function paginaspdf($dia1) {
 	/// end of records /// 
   }
 }
+
+paginaspdf($dia1);
 //DIA1
 
 
