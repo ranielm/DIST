@@ -3,7 +3,7 @@ $usuario = $_POST['usuario'];
 $senha = $_POST['senha'];
 $quebra = chr(13).chr(10);
 //DEFINE OS PARAMETROS PARA A CONEXAO COM O BANCO DE DADOS
-$servername = "localhost";
+$servername = "10.15.109.203";
 $username = "root";
 $password = "banco";
 $dbname = "dist";
@@ -39,13 +39,13 @@ else{
             }
             else if ($nivel == 3)
             {
-                header("Location: http://localhost/principal/pages/index.php");
+                header("Location: http://10.15.109.203/principal/pages/index.php");
             }           
         }
     }    
     else if($result->num_rows != 1)
     {
-        echo "<script>alert('Usuário e/ou senha inválidos.');window.location='http://localhost/entrar/index.php';</script>";      
+        echo "<script>alert('Usuário e/ou senha inválidos.');window.location='http://10.15.109.203/entrar/index.php';</script>";      
     }
 }
 ?>
