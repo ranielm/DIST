@@ -41,15 +41,18 @@ $dias = ((int)floor( $diferenca / (60 * 60 * 24))) +1; // 225 dias
 //$_SESSION['diaformatado'] = $diaformatado;
 
 //<td>" . date('d/m/Y', strtotime($row['reg_date'])) .  "</td>
-
+/*for ($i=0; $i < ; $i++) { 
+	# code...
+}*/
 require "banco.php"; // connection to database 
 $count="select * from relatorios WHERE datadodia = '$dia1'"; // SQL to get 10 records 
+$linhas = $mysql_num_rows($count);
 require('fpdf.php');
 $pdf = new FPDF(); 
 $pdf->AddPage();
 
 //$data = date('d/m/Y');
-$titulo = "Estado do banco em " . $dia1formatado . $dias;
+$titulo = "Estado do banco em " . $dia1formatado . "D" . $dias . "L" . $linhas;
 
 $pdf->SetTitle($titulo);
 
