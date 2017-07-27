@@ -49,7 +49,7 @@ $pdf = new FPDF();
 $pdf->AddPage();
 
 //$data = date('d/m/Y');
-$titulo = "Estado do banco em " . $dia1formatado;
+$titulo = "Estado do banco em " . $dia1formatado . $dias;
 
 $pdf->SetTitle($titulo);
 
