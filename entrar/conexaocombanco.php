@@ -39,7 +39,7 @@ else{
             }
             else if ($nivel == 3)
             {
-                header("Location: http://10.15.109.203/principal/pages/index.php");
+                header("Location: 10.15.109.203/principal/pages/index.php");
             }           
         }
     }    
