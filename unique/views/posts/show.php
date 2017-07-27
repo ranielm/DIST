@@ -2,4 +2,4 @@
 
 <p><?php echo $post->title; ?></p>
 <p><?php echo $post->content; ?></p>
-<p><?php echo "Autor: " . $post->author; ?></p>
+<b><p><?php echo "Autor: " . $post->author; ?></p>
