@@ -18,7 +18,7 @@
 
   // we're adding an entry for the new controller and its actions
   $controllers = array('pages' => ['home', 'error'],
-                       'posts' => ['index', 'show', 'enviardados', 'inserir', 'excluir']);
+                       'posts' => ['index', 'show', 'enviardados', 'inserir', 'excluirpost', 'voltarmemento']);
 
   if (array_key_exists($controller, $controllers)) {
     if (in_array($action, $controllers[$controller])) {

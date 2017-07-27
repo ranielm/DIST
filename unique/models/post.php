@@ -61,20 +61,19 @@ class Post {
 
     public static function excluirpost($id) {
       session_start();
-      $_SESSION['id'] = $id;
+      //$_SESSION['id'] = $id;
       $memento = new Caretaker;
-      $memento->addMemento();
+      $memento->addMemento($id);
       $db = Db::getInstance();
       $originais = "DELETE FROM posts WHERE id = $id";
       return;
     }
 
-    public static function voltarMemento($title, $content, $author) {
+    public static function voltarmemento() {
       $memento = new Caretaker;
       $memento->getMemento();
       return;
     }
-
 
   }
   class Caretaker
@@ -83,11 +82,11 @@ class Post {
     private $content;
     private $author;
       
-    public function addMemento()
+    public function addMemento($id)
     {
-      $id = $_SESSION['id'];
+      //$id = $_SESSION['id'];
       $db = Db::getInstance();
-      $originais = "SELECT * FROM posts WHERE id = $id";
+      $originais = "SELECT * FROM posts WHERE id = '$id'";
       foreach ($db->query($originais) as $row) 
       {
         $title = $row['title'];
@@ -95,6 +94,10 @@ class Post {
         $author = $row['author'];
 
         $req = $db->query("INSERT INTO memento (title, content, author) VALUES ('$title', '$content', '$author')");
+
+        $delete = "DELETE FROM posts WHERE id = '$id'";
+        $db->query($delete);
+     
       }
       return;
     }

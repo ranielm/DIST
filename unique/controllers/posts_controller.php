@@ -33,13 +33,24 @@
       require_once('views/posts/inserir.php');
     }
 
-    public function excluir() {
+    public function excluirpost() {
       if (!isset($_GET['id']))
         return call('pages', 'error');
 
       // we use the given id to get the right post
       $post = Post::excluirpost($_GET['id']);
-      require_once('views/posts/excluir.php');
+      //require_once('views/posts/excluir.php');
+      $this->index();      
+    }
+
+    public function voltarmemento() {
+      if (!isset($_GET['id']))
+        return call('pages', 'error');
+
+      // we use the given id to get the right post
+      $post = Post::voltarmemento();
+      $this->index();      
+      //require_once('views/posts/voltarmemento.php');
     }
   }
 ?>
