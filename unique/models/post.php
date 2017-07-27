@@ -54,8 +54,10 @@ class Post {
       $_SESSION['title'] = $title;
       $_SESSION['content'] = $content;
       $_SESSION['author'] = $author;
+      echo $_SESSION['author'];
       $memento = new Caretaker;
       $memento->addMemento();
+      return;
     }
   }
   class Caretaker
@@ -64,14 +66,15 @@ class Post {
     private $content;
     private $author;
       
-    public function addMemento ()
+    public function addMemento()
     {
       $this->$title = $_SESSION['title'];
       $this->$content = $_SESSION['content'];
       $this->$author = $_SESSION['author']; 
+      echo $_SESSION['author'];
       $db = Db::getInstance();
       $req = $db->query("INSERT INTO memento (title, content, author) VALUES ('$title', '$content', '$author')");
-      
+      return;
     }
       
     public function getMemento()
