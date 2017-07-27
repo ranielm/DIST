@@ -50,8 +50,9 @@ require "banco.php"; // connection to database
 require('fpdf.php');
 $pdf = new FPDF(); 
 
-function paginaspdf($dia1) {
-  for ($i=0; $i < $dias; $i++) { 
+//DIA1
+
+for ($i=0; $i < $dias; $i++) { 
 	$dia1 = $_SESSION['dia'];
 	$count="select * from relatorios WHERE datadodia = '$dia1'"; // SQL to get 10 records 
 	//$linhas = $mysqli_num_rows($count);
@@ -94,12 +95,7 @@ function paginaspdf($dia1) {
 		$fill = !$fill; // to give alternate background fill  color to rows
 	}
 	/// end of records /// 
-  }
 }
-
-paginaspdf($dia1);
-//DIA1
-
 
 /*
 //DIA2
