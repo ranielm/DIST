@@ -253,7 +253,7 @@ if (!isset($_SESSION))
                                 <div class="col-lg-8">
                                     <div class="table-responsive">
 
-                                    <form  action="/topdf/intervalotopdf.php" method="post" autocomplete="on"> 
+                                    <form  action="diatopdf.php" method="post" autocomplete="on"> 
                                     
                                     <p> 
                                     <label for="diaescolhido" class="diaescolhido" >Qual a data inicial?</label>

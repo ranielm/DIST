@@ -18,8 +18,8 @@ $diaformatado = $_SESSION['diaformatado'];*/
 //DATA DE HOJE
 //$hoje = date('d/m/Y');
 
-$dia1 = date('2017/07/26');
-$dia2 = date('2017/07/25');
+$dia1 = $_SESSION['dia1'];
+$dia2 = $_SESSION['dia2'];
 $_SESSION['dia'] = $dia1;
 
 //DIAS FORMATADOS E NÃO FORMATADOS
