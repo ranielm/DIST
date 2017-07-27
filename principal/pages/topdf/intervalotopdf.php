@@ -46,7 +46,7 @@ $dias = ((int)floor( $diferenca / (60 * 60 * 24))) +1; // 225 dias
 }*/
 require "banco.php"; // connection to database 
 $count="select * from relatorios WHERE datadodia = '$dia1'"; // SQL to get 10 records 
-$linhas = $mysql_num_rows($count);
+//$linhas = $mysql_num_rows($count);
 require('fpdf.php');
 $pdf = new FPDF(); 
 $pdf->AddPage();
