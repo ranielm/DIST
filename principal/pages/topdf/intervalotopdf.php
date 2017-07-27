@@ -45,14 +45,18 @@ $dias = ((int)floor( $diferenca / (60 * 60 * 24))) +1; // 225 dias
 	# code...
 }*/
 require "banco.php"; // connection to database 
-$count="select * from relatorios WHERE datadodia = '$dia1'"; // SQL to get 10 records 
+//$count="select * from relatorios WHERE datadodia = '$dia1'"; // SQL to get 10 records 
 //$linhas = $mysql_num_rows($count);
+
+$result = mysql_query("select * from relatorios WHERE datadodia = '$dia1'");  
+$number_of_rows = mysql_num_rows($result); 
+
 require('fpdf.php');
 $pdf = new FPDF(); 
 $pdf->AddPage();
 
 //$data = date('d/m/Y');
-$titulo = "Estado do banco em " . $dia1formatado . "D" . $dias . "L" . $linhas;
+$titulo = "Estado do banco em " . $dia1formatado . "D" . $dias . "L" . $number_of_rows;
 
 $pdf->SetTitle($titulo);
 
