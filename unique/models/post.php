@@ -178,6 +178,7 @@ PRESSIONAR O BOTAO NO HTML DA VIEW, EXECUTA O SEGUINTE>
 $controle->pressionarBotao();
 */
 
+/*
 //STATE
     abstract class State{
         public $post;
@@ -272,4 +273,5 @@ $controle->pressionarBotao();
                     $this->estado = new StatePrata($this->post);
             }
         }           
+        */
 ?>
