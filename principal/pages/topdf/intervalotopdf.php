@@ -20,6 +20,7 @@ $diaformatado = $_SESSION['diaformatado'];*/
 
 $dia1 = date('2017/07/26');
 $dia2 = date('2017/07/25');
+$_SESSION['dia'] = $dia1;
 
 //DIAS FORMATADOS E NÃO FORMATADOS
 //$diasemformatacao = $_POST['diaescolhido'];
@@ -51,6 +52,7 @@ $pdf = new FPDF();
 
 function paginaspdf($dia1) {
   for ($i=0; $i < $dias; $i++) { 
+	$dia1 = $_SESSION['dia'];
 	$count="select * from relatorios WHERE datadodia = '$dia1'"; // SQL to get 10 records 
 	//$linhas = $mysqli_num_rows($count);
 
