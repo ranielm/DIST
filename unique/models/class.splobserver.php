@@ -83,7 +83,7 @@ class Reader implements SplObserver{
     }
     
     public function update(\SplSubject $subject) {
-        echo $this->name.' is reading breakout news <b>'.$subject->getContent().'</b><br>';
+        echo $this->name.' está lendo as novas notícias <b>'.$subject->getContent().'</b><br>';
     }
 
     /*public function update(\SplSubject $subject) {
@@ -94,63 +94,19 @@ class Reader implements SplObserver{
 
 $post = new Post('Create');
 
-$allen = new Reader('Allen');
-$jim = new Reader('Jim');
-$linda = new Reader('Linda');
+$diego = new Reader('Diego');
+$amanda = new Reader('Amanda');
+$raniel = new Reader('Raniel');
 
 //add reader
-$post->attach($allen);
-$post->attach($jim);
-$post->attach($linda);
+$post->attach($diego);
+$post->attach($amanda);
+$post->attach($raniel);
 
 //remove reader
-$post->detach($linda);
+$post->detach($raniel);
 
 //set break outs
 $post->breakOutNews('Novidades Unique');
-
-//COMANDO
-abstract class Comando{
-    abstract protected function executar();
-}
-
-class NaoExibir extends Comando{
-    private $post;
-    private $nome;
-    
-    public function __construct($post,$nome){
-        $this->post = $post;
-        $this->nome = $nome;
-    }
-    public function executar(){
-        $this->$post.detach($this->nome);
-    }
-}
-
-class ControleRemoto{
-    private $comando;
-    public function __construct(){}
-    public function setComando($comando){
-        $this->comando = $comando;
-    }
-    public function pressionarBotao(){
-        $this->comando.executar();
-    }
-}
-/*
-COMO DEVE SER UTILIZADO O PADRAO COMMAND > 
-
-$controle_remoto = new ControleRemoto();
-$post = new Post(...);
-$comando_naoexibir = new NaoExibir($post,'nome_do_usuario');
-$controle->setComando($comando_naoexibir);
-
-PRESSIONAR O BOTAO NO HTML DA VIEW, EXECUTA O SEGUINTE>
-$controle->pressionarBotao();
-
-*/
-
-
-
 
 ?>
