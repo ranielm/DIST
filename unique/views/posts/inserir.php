@@ -11,7 +11,7 @@
     </div>
     <div>
         <label for="msg">Mensagem:</label>
-        <textarea id="msg" name="mensagem"></textarea>
+        <textarea id="mensagem" name="mensagem"></textarea>
     </div>
     
     <div class="button">
