@@ -61,7 +61,7 @@ for ($i=0; $i < $dias; $i++) {
 	$pdf->AddPage();
 
 	//$data = date('d/m/Y');
-	$titulo = "Estado do banco em " . $dia1formatado . $ontem;
+	$titulo = "Estado do banco em " . $dia1formatado;
 
 	$pdf->SetTitle($titulo);
 
@@ -96,7 +96,8 @@ for ($i=0; $i < $dias; $i++) {
 		$fill = !$fill; // to give alternate background fill  color to rows
 	}
 	/// end of records /// 
-	$_SESSION['dia'] = $ontem = date('d/m/Y', strtotime($dia1 .' -1 day'));
+	$ontem = date('d/m/Y', strtotime($dia1 .' -1 day'));
+	$_SESSION['dia'] = $ontem;
 }
 
 /*
