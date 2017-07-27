@@ -105,8 +105,7 @@ class Post {
         $author = $row['author'];
       */
       $req = $db->query("INSERT INTO memento (title, content, author) VALUES ('$title', '$content', '$author')");
-      $db = Db::getInstance();      
-      $delete = $db->query("DELETE FROM posts WHERE id=23");
+      $delete = $db->query("DELETE FROM posts WHERE title = '$title', content = '$content', author = '$author'");
      
       return;
     }
