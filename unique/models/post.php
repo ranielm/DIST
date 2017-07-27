@@ -1,5 +1,5 @@
 <?php
-class Post {
+class Post implements \SplSubject{
     // we define 3 attributes
     // they are public so that we can access them using $post->author directly
     public $id;
