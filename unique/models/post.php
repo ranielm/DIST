@@ -50,12 +50,13 @@ class Post {
       //$req->execute(array('id' => $id));
       //$post = $req->fetch();
       //return new Post($post['id'], $post['title'], $post['content'], $post['author']);      
-      /*session_start();
+      session_start();
       $_SESSION['title'] = $title;
       $_SESSION['content'] = $content;
       $_SESSION['author'] = $author;
       $memento = new Caretaker;
-      $memento->addMemento();*/
+      $memento->addMemento();
+      $req = $db->query("DELETE FROM posts WHERE id = '$id'");            
       return;
     }
 
@@ -66,7 +67,7 @@ class Post {
       $memento = new Caretaker;
       $memento->addMemento();
       $db = Db::getInstance();
-      $req = $db->query("DELETE FROM posts WHERE id = :id");      
+      $req = $db->query("DELETE FROM posts WHERE id = '$id'");      
       //$delete = "'";
       //$db->query($delete);
       return;
@@ -87,17 +88,20 @@ class Post {
       
     public function addMemento($id)
     {
-      $id = $_SESSION['id'];
+      $title = $_SESSION['title'];
+      $content = $_SESSION['content'];
+      $author = $_SESSION['author'];
+      //$id = $_SESSION['id'];
       //$id = intval($id);
       $db = Db::getInstance();
-      $originais = "SELECT * FROM posts WHERE id = '$id'";
-      foreach ($db->query($originais) as $row) 
+      //$originais = "SELECT * FROM posts WHERE id = '$id'";
+      /*foreach ($db->query($originais) as $row) 
       {
         $title = $row['title'];
         $content = $row['content'];
         $author = $row['author'];
-
-        $req = $db->query("INSERT INTO memento (title, content, author) VALUES ('$title', '$content', '$author')");
+      */
+      $req = $db->query("INSERT INTO memento (title, content, author) VALUES ('$title', '$content', '$author')");
      
       }
       return;
