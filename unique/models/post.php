@@ -103,7 +103,6 @@ class Post {
       */
       $req = $db->query("INSERT INTO memento (title, content, author) VALUES ('$title', '$content', '$author')");
      
-      }
       return;
     }
       
