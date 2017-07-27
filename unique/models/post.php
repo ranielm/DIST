@@ -7,20 +7,12 @@ class Post implements \SplSubject{
     public $content;
     public $author;
     public $observers = array();
-    public $estado;
-    public $curtidas;
-    
-    public function __construct($id, $title, $content, $author, $curtidas, $estado) {
+
+    public function __construct($id, $title, $content, $author) {
       $this->id      = $id;
       $this->title   = $title;
       $this->content = $content;
       $this->author  = $author;
-      $this->curtidas  = $curtidas;
-      $this->estado = new StateBronze(); 
-    }
-
-    public function incrementaCurtidas(){
-            $this->estado.incrementaCurtidas();
     }
 
     public static function all() {
@@ -92,8 +84,6 @@ class Post implements \SplSubject{
     }
 
   }
-
-  //MEMENTO
   class Caretaker
   {
     private $title;
@@ -138,218 +128,7 @@ class Post implements \SplSubject{
         $delete = "DELETE FROM memento";
         $db->query($delete);
       }
-      return;      
+      return;
     }
-
-//OBSERVER 
-    //add observer
-    public function attach(\SplObserver $observer) {
-        $this->observers[] = $observer;
-    }
-
-    //remove observer
-    public function detach(\SplObserver $observer) {
-        
-        $key = array_search($observer,$this->observers, true);
-        if($key){
-            unset($this->observers[$key]);
-        }
-    }
-
-    //set breakouts news
-    public function breakOutNews($content) {
-        $this->content = $content;
-        $this->notify();
-    }
-
-    public function getContent() {
-        return $this->content." ({$this->name})";
-    }
-
-    //notify observers(or some of them)
-    public function notify() {
-        foreach ($this->observers as $value) {
-            $value->update($this);
-        }
-    }
-}
-
-abstract class Comando{
-    abstract protected function executar();
-}
-
-class NaoExibir extends Comando{
-    private $post;
-    private $nome;
-    
-    public function __construct($post,$nome){
-        $this->post = $post;
-        $this->nome = $nome;
-    }
-    public function executar(){
-        $this->$post.detach($this->nome);
-    }
-}
-
-class ControleRemoto{
-    private $comando;
-    public function __construct(){}
-    public function setComando($comando){
-        $this->comando = $comando;
-    }
-    public function pressionarBotao(){
-        $this->comando.executar();
-    }
-}
-/*
-COMO DEVE SER UTILIZADO O PADRAO COMMAND > 
-
-$controle_remoto = new ControleRemoto();
-$post = new Post(...);
-$comando_naoexibir = new NaoExibir($post,'nome_do_usuario');
-$controle->setComando($comando_naoexibir);
-
-PRESSIONAR O BOTAO NO HTML DA VIEW, EXECUTA O SEGUINTE>
-$controle->pressionarBotao();
-
-*/
-
-
-class Reader implements SplObserver{
-    
-    private $name;
-    
-    public function __construct($name) {
-        $this->name = $name;
-    }
-    
-    public function update(\SplSubject $subject) {
-        echo $this->name.' is reading breakout news <b>'.$subject->getContent().'</b><br>';
-    }
-
-    /*public function update(\SplSubject $subject) {
-        $subject->getContent();
-        
-    }*/
-}
-
-$post = new Post('Create');
-
-$allen = new Reader('Allen');
-$jim = new Reader('Jim');
-$linda = new Reader('Linda');
-
-//add reader
-$post->attach($allen);
-$post->attach($jim);
-$post->attach($linda);
-
-//remove reader
-$post->detach($linda);
-
-//set break outs
-$post->breakOutNews('Novidades Unique');
-
   }
-
-
-    abstract class State{
-        public $post;
-        public $limiteSuperior;
-        public $limiteInferior;
-        
-        public function __construct($post) {
-            $this->post = $post;
-            setLimites(); 
-        }
-        
-        public abstract function setLimites();
-        
-        public function incrementaCurtidas(){
-            verificarAlteracaoDeEstado();  
-        }
-        
-        public abstract function verificarAlteracaoDeEstado();
-    }
-
-
-class StateBronze implements State{
-        
-        public function __construct($post) {
-            super($post);
-        }
-        
-        public function setLimites(){
-            $this->limiteInferior = 0;
-            $this->limiteSuperior = 30;
-        }
-        
-        //curtidas = curtidas do post.
-        public function incrementaCurtidas(){
-            curtidas ++;//incremento das curtidas do post. 
-            verificarAlteracaoEstado();
-            //chow com cor vermelha
-        }
-        
-        public function verificarAlteracaoEstado(){
-            if(curtidas > $this->limiteSuperior)
-                $this->estado = new StatePrata($this->post);   
-        }
-    }
-
-
-class StatePrata implements State{
-        
-        public function __construct($post) {
-            super($post);
-        }
-        
-        public function setLimites(){
-            $this->limiteInferior = 30;
-            $this->limiteSuperior = 80;
-        }
-        
-        //curtidas = curtidas do post.
-        public function incrementaCurtidas(){
-            curtidas ++;//incremento das curtidas do post. 
-            verificarAlteracaoEstado();
-            //show com cor amarela
-        }
-        
-        public function verificarAlteracaoEstado(){
-            if(curtidas > $this->limiteSuperior)
-                $this->estado = new StateOuro($this->post);
-            else
-                if(curtidas < $this->limiteInferior) {
-                    $this->estado = new StateBronze ($this->post);
-            }   
-        }
-    }
-
-        class StateOuro implements State
-        {
-            
-            public function __construct($post) {
-                super($post);
-            }
-            
-            public function setLimites(){
-                $this->limiteInferior = 80;
-                $this->limiteSuperior = 10000;
-            }
-            
-            //curtidas = curtidas do post.
-            public function incrementaCurtidas(){
-                curtidas ++;//incremento das curtidas do post. 
-                verificarAlteracaoEstado();
-                //show com cor verde
-            }
-            
-            public function verificarAlteracaoEstado(){
-                if(curtidas < $this->limiteInferior)
-                    $this->estado = new StatePrata($this->post);
-            }
-        }   
-    
-
 ?>
