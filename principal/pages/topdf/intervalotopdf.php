@@ -49,8 +49,8 @@ $dias = ((int)floor( $diferenca / (60 * 60 * 24))) +1; // 225 dias
 //$linhas = $mysql_num_rows($count);
 
 $con=mysqli_connect("localhost","root","banco","dist");
-$count="select * from relatorios WHERE datadodia = '$dia1'";
-$result=mycounti_query($con,$count);
+$sql="select * from relatorios WHERE datadodia = '$dia1'";
+$result=mysqli_query($con,$count);
 // Return the number of rows in result set
 $rowcount=mysqli_num_rows($result);
 mysqli_close($con);
