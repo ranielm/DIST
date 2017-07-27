@@ -55,7 +55,6 @@ $pdf = new FPDF();
 for ($i=0; $i < $dias; $i++) { 
 	$dia1 = $_SESSION['dia'];
 	//$dia2 = date('2017/07/26');
-	$dia1formatado = date('d/m/Y', strtotime($dia1));
 	$count="select * from relatorios WHERE datadodia = '$dia1'"; // SQL to get 10 records 
 	//$linhas = $mysqli_num_rows($count);
 
@@ -98,7 +97,8 @@ for ($i=0; $i < $dias; $i++) {
 	}
 	/// end of records /// 
 	$ontem = date('d/m/Y', strtotime($dia1 .' -1 day'));
-	$_SESSION['dia'] = $ontem;
+	$ontemformatado = date('d/m/Y', strtotime($ontem));
+	$_SESSION['dia'] = $ontemformatado;
 }
 
 /*
