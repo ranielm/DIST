@@ -44,16 +44,9 @@ $dias = ((int)floor( $diferenca / (60 * 60 * 24))) +1; // 225 dias
 /*for ($i=0; $i < ; $i++) { 
 	# code...
 }*/
-//require "banco.php"; // connection to database 
-//$count="select * from relatorios WHERE datadodia = '$dia1'"; // SQL to get 10 records 
-//$linhas = $mysql_num_rows($count);
-
-$con=mysqli_connect("localhost","root","banco","dist");
-$sql="select * from relatorios WHERE datadodia = '$dia1'";
-$result=mysqli_query($con,$count);
-// Return the number of rows in result set
-$rowcount=mysqli_num_rows($result);
-mysqli_close($con);
+require "banco.php"; // connection to database 
+$count="select * from relatorios WHERE datadodia = '$dia1'"; // SQL to get 10 records 
+$linhas = $mysqli_num_rows($count);
 
 require('fpdf.php');
 $pdf = new FPDF(); 
