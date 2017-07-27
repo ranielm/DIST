@@ -50,24 +50,27 @@ class Post {
       //$req->execute(array('id' => $id));
       //$post = $req->fetch();
       //return new Post($post['id'], $post['title'], $post['content'], $post['author']);      
+      /*session_start();
+      $_SESSION['title'] = $title;
+      $_SESSION['content'] = $content;
+      $_SESSION['author'] = $author;
+      $memento = new Caretaker;
+      $memento->addMemento();*/
+      //$req = $db->query("DELETE FROM posts WHERE id = '$id'");            
+      return;
+    }
+
+    public static function excluirpost($title, $content, $author) {
+      //$_SESSION['id'] = $id;
+      //$id = intval($id);
+      $db = Db::getInstance();
+      //$req = $db->query("INSERT INTO posts (title, content, author) VALUES ('$title', '$content', '$author')");    
       session_start();
       $_SESSION['title'] = $title;
       $_SESSION['content'] = $content;
       $_SESSION['author'] = $author;
       $memento = new Caretaker;
       $memento->addMemento();
-      $req = $db->query("DELETE FROM posts WHERE id = '$id'");            
-      return;
-    }
-
-    public static function excluirpost($id) {
-      session_start();
-      //$_SESSION['id'] = $id;
-      $id = intval($id);
-      $memento = new Caretaker;
-      $memento->addMemento();
-      $db = Db::getInstance();
-      $req = $db->query("DELETE FROM posts WHERE id = '$id'");      
       //$delete = "'";
       //$db->query($delete);
       return;
@@ -102,6 +105,7 @@ class Post {
         $author = $row['author'];
       */
       $req = $db->query("INSERT INTO memento (title, content, author) VALUES ('$title', '$content', '$author')");
+      $delete = $db->query("DELETE FROM posts WHERE title = '$title', content = '$content', author = '$author'");
      
       return;
     }
@@ -109,9 +113,9 @@ class Post {
     public function getMemento()
     {
       $db = Db::getInstance();
-      $originais = "SELECT * FROM memento";
+      $req = $db->prepare('SELECT * FROM memento');
 
-      foreach ($db->query($originais) as $row) 
+      foreach ($db->query($req) as $row) 
       {
         $title = $row['title'];
         $content = $row['content'];

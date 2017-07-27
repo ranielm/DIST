@@ -34,18 +34,20 @@
     }
 
     public function excluirpost() {
-      if (!isset($_GET['id']))
+      if (!isset($_GET['title']))
         return call('pages', 'error');
+      $title = $_GET['title'];
+      $content = $_GET['content'];
+      $author = $_GET['author'];
 
-      // we use the given id to get the right post
-      $post = Post::excluirpost($_GET['id']);
+      $post = Post::excluirpost($title, $content, $author);
       //require_once('views/posts/excluir.php');
       $this->index();      
     }
 
     public function voltarmemento() {
-      if (!isset($_GET['id']))
-        return call('pages', 'error');
+     // if (!isset($_GET['id']))
+       // return call('pages', 'error');
 
       // we use the given id to get the right post
       $post = Post::voltarmemento();
