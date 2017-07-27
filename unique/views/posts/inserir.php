@@ -2,13 +2,16 @@
 <html>
 <body>
 
+<br>
 <form action="http://192.168.0.102/unique/controllers/insert_controller.php" method="post">
     <fieldset>
     <legend>Digite as informações da postagem</legend>
     Título:<br>
     <input type="text" id="title" name="title" />
+    <br>
     Conteúdo:<br>
     <textarea id="content" name="content"></textarea>
+    <br>
     Autor:<br>
     <input type="author" id="author" name="author" />
     <br><br>
