@@ -13,10 +13,10 @@ $dia1formatado = date('d/m/Y', strtotime($_POST['diaescolhido']));
 //SESSION
 session_start();
 $_SESSION['dia2'] = $dia2;
-$_SESSION['dia2formatado'] = $dia2formatado;
+//$_SESSION['dia2formatado'] = $dia2formatado;
 
 $_SESSION['dia1'] = $dia1;
-$_SESSION['dia1formatado'] = $dia1formatado;
+//$_SESSION['dia1formatado'] = $dia1formatado;
 
 //VERIFICA SE DIA EXISTE
 $connect = mysqli_connect("localhost", "root", "banco", "dist");
