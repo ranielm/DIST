@@ -6,15 +6,16 @@ class Post{
     public $title;
     public $content;
     public $author;
-    public $estado;
-    public $curtidas;
+    //public $estado;
+    //public $curtidas;
 
-    public function __construct($id, $title, $content, $author, $curtidas, $estado) {
+    //public function __construct($id, $title, $content, $author, $curtidas, $estado) {
+      public function __construct($id, $title, $content, $author) {
       $this->id      = $id;
       $this->title   = $title;
       $this->content = $content;
       $this->author  = $author;
-      $this->estado = new StateBronze();
+      //      $this->estado = new StateBronze();
     }
 
     public static function all() {
@@ -63,11 +64,7 @@ class Post{
       return;
     }
 
-    public function incrementaCurtidas(){
-            $this->estado.incrementaCurtidas();
-    }    
-
-    //MEMENTO
+//MEMENTO
     public static function excluirpost($title, $content, $author) {
       //$_SESSION['id'] = $id;
       //$id = intval($id);
@@ -140,4 +137,45 @@ class Post{
       
     }
   }
+
+//COMANDO
+abstract class Comando{
+    abstract protected function executar();
+}
+
+class NaoExibir extends Comando{
+    private $post;
+    private $nome;
+    
+    public function __construct($post,$nome){
+        $this->post = $post;
+        $this->nome = $nome;
+    }
+    public function executar(){
+        $this->$post.detach($this->nome);
+    }
+}
+
+class ControleRemoto{
+    private $comando;
+    public function __construct(){}
+    public function setComando($comando){
+        $this->comando = $comando;
+    }
+    public function pressionarBotao(){
+        $this->comando.executar();
+    }
+}
+/*
+COMO DEVE SER UTILIZADO O PADRAO COMMAND > 
+
+$controle_remoto = new ControleRemoto();
+$post = new Post(...);
+$comando_naoexibir = new NaoExibir($post,'nome_do_usuario');
+$controle->setComando($comando_naoexibir);
+
+PRESSIONAR O BOTAO NO HTML DA VIEW, EXECUTA O SEGUINTE>
+$controle->pressionarBotao();
+*/
+
 ?>
