@@ -96,8 +96,8 @@ $fill = !$fill; // to give alternate background fill  color to rows
 $count="select * from relatorios WHERE datadodia = '$dia2'"; // SQL to get 10 records 
 //$linhas = $mysqli_num_rows($count);
 
-require('fpdf.php');
-$pdf = new FPDF(); 
+//require('fpdf.php');
+//$pdf = new FPDF(); 
 $pdf->AddPage();
 
 //$data = date('d/m/Y');
