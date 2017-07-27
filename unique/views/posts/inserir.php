@@ -3,7 +3,7 @@
 <body>
 
 <br>
-<form action="http://192.168.0.102/unique/controllers/insert_controller.php" method="post">
+<form action="http://10.15.109.203/unique/controllers/insert_controller.php" method="post">
     <fieldset>
     <legend>Digite as informações da postagem</legend>
     Título:<br>
