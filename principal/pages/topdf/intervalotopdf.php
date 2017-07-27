@@ -10,9 +10,10 @@ if(!file_exists('font')){
 exit;	
 }
 
-$dia1 = date('2017/07/26');
+//FUNCIONANDO
+/*$dia1 = date('2017/07/26');
 $dia2 = date('2017/07/25');
-$_SESSION['dia'] = $dia1;
+$_SESSION['dia'] = $dia1;*/
 
 //YYYY/MM/DD
 $time_final = strtotime($dia1);

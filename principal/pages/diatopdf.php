@@ -4,10 +4,10 @@ $hoje = date('d/m/Y');
 
 //DIAS FORMATADOS E NÃO FORMATADOS
 $dia2 = $_POST['dia2'];
-$dia2formatado = date('d/m/Y', strtotime($_POST['diaescolhido']));
+$dia2formatado = date('d/m/Y', strtotime($_POST['dia2']));
 
-$dia1 = $_POST['dia2'];
-$dia1formatado = date('d/m/Y', strtotime($_POST['diaescolhido']));
+$dia1 = $_POST['dia1'];
+$dia1formatado = date('d/m/Y', strtotime($_POST['dia1']));
 
 
 //SESSION
