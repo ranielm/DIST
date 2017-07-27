@@ -26,7 +26,7 @@ $dia2 = date('2017/07/25');
 $dia1formatado = date('d/m/Y', strtotime($dia1));
 $dia2formatado = date('d/m/Y', strtotime($dia2));
 
-$intervalo = $dia1->diff($dia2);
+//$intervalo = $dia1->diff($dia2);
 
 //SESSION
 //session_start();
