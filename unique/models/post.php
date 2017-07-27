@@ -49,7 +49,37 @@ class Post {
       // the query was prepared, now we replace :id with our actual $id value
       //$req->execute(array('id' => $id));
       //$post = $req->fetch();
-      //return new Post($post['id'], $post['title'], $post['content'], $post['author']);
+      //return new Post($post['id'], $post['title'], $post['content'], $post['author']);      
+      session_start();
+      $_SESSION['title'] = $title;
+      $_SESSION['content'] = $content;
+      $_SESSION['author'] = $author;
+      $memento = new Caretaker;
+      $memento->addMemento();
+    }
+  }
+  class Caretaker
+  {
+    private $title;
+    private $content;
+    private $author;
+      
+    public function addMemento ()
+    {
+      $this->$title = $_SESSION['title'];
+      $this->$content = $_SESSION['content'];
+      $this->$author = $_SESSION['author']; 
+      $db = Db::getInstance();
+      $req = $db->query("INSERT INTO memento (title, content, author) VALUES ('$title', '$content', '$author')");
+      
+    }
+      
+    public function getMemento()
+    {
+      $this->caretakerStorage = file_get_contents("store.json");
+      $jsonData = json_decode($this->caretakerStorage,true);
+      $this->storage= $jsonData["hold"][0];
+      return $this->storage;
     }
   }
 ?>
