@@ -98,7 +98,7 @@ for ($i=0; $i < $dias; $i++) {
 	/// end of records /// 
 	$ontem = date('Y/m/d', strtotime($dia1 .' -1 day'));
 	$ontemformatado = date('d/m/Y', strtotime($ontem));
-	$_SESSION['dia'] = $ontemformatado;
+	$_SESSION['dia'] = $ontem;
 }
 
 /*
