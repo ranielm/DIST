@@ -59,9 +59,9 @@ for ($i=0; $i < $dias; $i++) {
 	//$linhas = $mysqli_num_rows($count);
 
 	$pdf->AddPage();
-
+	$diaformatado = date('d/m/Y', strtotime($dia1));
 	//$data = date('d/m/Y');
-	$titulo = "Estado do banco em " . $dia1;
+	$titulo = "Estado do banco em " . $diaformatado;
 
 	$pdf->SetTitle($titulo);
 
@@ -97,7 +97,7 @@ for ($i=0; $i < $dias; $i++) {
 	}
 	/// end of records /// 
 	$ontem = date('Y/m/d', strtotime($dia1 .' -1 day'));
-	$ontemformatado = date('d/m/Y', strtotime($ontem));
+	//$ontemformatado = date('d/m/Y', strtotime($ontem));
 	$_SESSION['dia'] = $ontem;
 }
 
