@@ -9,5 +9,4 @@
 
 <footer>
 <a href='?controller=posts&action=voltarmemento'>Desfazer remoção</a>
-<p>
 </footer>
