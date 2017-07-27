@@ -49,23 +49,10 @@ $dias = ((int)floor( $diferenca / (60 * 60 * 24))) +1; // 225 dias
 //$linhas = $mysql_num_rows($count);
 
 $con=mysqli_connect("localhost","root","banco","dist");
-// Check connection
-if (mysqli_connect_errno())
-{
-	echo "Failed to connect to MySQL: " . mysqli_connect_error();
-}
-
-$sql="select * from relatorios WHERE datadodia = '$dia1'";
-
-if ($result=mysqli_query($con,$sql))
-{
-  // Return the number of rows in result set
-  $rowcount=mysqli_num_rows($result);
-  printf("Result set has %d rows.\n",$rowcount);
-  // Free result set
-  mysqli_free_result($result);
-}
-
+$count="select * from relatorios WHERE datadodia = '$dia1'";
+$result=mycounti_query($con,$count))
+// Return the number of rows in result set
+$rowcount=mysqli_num_rows($result);
 mysqli_close($con);
 
 require('fpdf.php');
