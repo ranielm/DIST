@@ -54,7 +54,7 @@ $pdf = new FPDF();
 
 for ($i=0; $i < $dias; $i++) { 
 	$dia1 = $_SESSION['dia'];
-	$ontem = date($dia1,strtotime("-2 days"));
+	$ontem = date($dia1formatado,strtotime("-2 days"));
 
 	$count="select * from relatorios WHERE datadodia = '$dia1'"; // SQL to get 10 records 
 	//$linhas = $mysqli_num_rows($count);
