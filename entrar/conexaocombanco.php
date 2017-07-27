@@ -1,9 +1,27 @@
 <?php
+  class Db {
+
+    // SINGLETON
+    private static $instance = NULL;
+
+    private function __construct() {}
+
+    private function __clone() {}
+
+    public static function getInstance() {
+      if (!isset(self::$instance)) {
+        $pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
+        self::$instance = new PDO('mysql:host=localhost;dbname=unique', 'root', 'banco', $pdo_options);
+      }
+      return self::$instance;
+    }
+  }
+
 $usuario = $_POST['usuario'];
 $senha = $_POST['senha'];
 $quebra = chr(13).chr(10);
 //DEFINE OS PARAMETROS PARA A CONEXAO COM O BANCO DE DADOS
-$servername = "10.15.109.203";
+$servername = "localhost";
 $username = "root";
 $password = "banco";
 $dbname = "dist";
