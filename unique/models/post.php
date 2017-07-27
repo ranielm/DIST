@@ -68,10 +68,10 @@ class Post {
       
     public function addMemento()
     {
-      $this->$title = $_SESSION['title'];
-      $this->$content = $_SESSION['content'];
-      $this->$author = $_SESSION['author']; 
-      echo $_SESSION['author'];
+      $title = $_SESSION['title'];
+      $content = $_SESSION['content'];
+      $author = $_SESSION['author']; 
+      echo $_SESSION['content'];
       $db = Db::getInstance();
       $req = $db->query("INSERT INTO memento (title, content, author) VALUES ('$title', '$content', '$author')");
       return;
