@@ -44,10 +44,12 @@ $dias = ((int)floor( $diferenca / (60 * 60 * 24))) +1; // 225 dias
 /*for ($i=0; $i < ; $i++) { 
 	# code...
 }*/
-require "banco.php"; // connection to database 
+//require "banco.php"; // connection to database 
 //$count="select * from relatorios WHERE datadodia = '$dia1'"; // SQL to get 10 records 
 //$linhas = $mysql_num_rows($count);
 
+$con = mysql_connect("localhost", "root", "banco");  
+$selectdb = mysql_select_db("dist",$con); 
 $result = mysql_query("select * from relatorios WHERE datadodia = '$dia1'");  
 $number_of_rows = mysql_num_rows($result); 
 
