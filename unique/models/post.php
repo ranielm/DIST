@@ -39,12 +39,12 @@ class Post {
       return new Post($post['id'], $post['title'], $post['content'], $post['author']);
     }
     
-    public static function inserir() {
+    public static function inserir($title, $content, $author) {
       $db = Db::getInstance();
       // we make sure $id is an integer
-      $title = "titulo"; 
-      $content = "conteudo"; 
-      $author = "autor"; 
+      //$title = "titulo"; 
+      //$content = "conteudo"; 
+      //$author = "autor"; 
       $req = $db->query("INSERT INTO posts (title, content, author) VALUES ('$title', '$content', '$author')");
       // the query was prepared, now we replace :id with our actual $id value
       //$req->execute(array('id' => $id));
