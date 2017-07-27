@@ -48,17 +48,32 @@ $dias = ((int)floor( $diferenca / (60 * 60 * 24))) +1; // 225 dias
 //$count="select * from relatorios WHERE datadodia = '$dia1'"; // SQL to get 10 records 
 //$linhas = $mysql_num_rows($count);
 
-$con = mysql_connect("localhost", "root", "banco");  
-$selectdb = mysql_select_db("dist",$con); 
-$result = mysql_query("select * from relatorios WHERE datadodia = '$dia1'");  
-$number_of_rows = mysql_num_rows($result); 
+$con=mysqli_connect("localhost","root","banco","dist");
+// Check connection
+if (mysqli_connect_errno())
+{
+	echo "Failed to connect to MySQL: " . mysqli_connect_error();
+}
+
+$sql="select * from relatorios WHERE datadodia = '$dia1'";
+
+if ($result=mysqli_query($con,$sql))
+{
+  // Return the number of rows in result set
+  $rowcount=mysqli_num_rows($result);
+  printf("Result set has %d rows.\n",$rowcount);
+  // Free result set
+  mysqli_free_result($result);
+}
+
+mysqli_close($con);
 
 require('fpdf.php');
 $pdf = new FPDF(); 
 $pdf->AddPage();
 
 //$data = date('d/m/Y');
-$titulo = "Estado do banco em " . $dia1formatado . "D" . $dias . "L" . $number_of_rows;
+$titulo = "Estado do banco em " . $dia1formatado . "D" . $dias . "L" . $linhas;
 
 $pdf->SetTitle($titulo);
 
