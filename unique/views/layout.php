@@ -6,7 +6,7 @@
     <header>
       <a href='/unique'>Início</a>
       <a href='?controller=posts&action=index'>Notícias</a>
-      <a href='?controller=users&action=index'>Usuários</a>
+      <a href='?controller=posts&action=enviardados'>Criar postagem</a>
     </header>
 
     <?php require_once('routes.php'); ?>

@@ -8,12 +8,12 @@ class Post implements \SplSubject{
     public $author;
     public $observers = array();
     public $lida;
-
-    public function __construct($id, $title, $content, $author) {
+    /// curtidas
+    public function __construct($id, $title, $content, $author) { // receber numero de curtidas do banco
       $this->id      = $id;
       $this->title   = $title;
       $this->content = $content;
-      $this->author  = $author;
+      $this->author  = $author;/// setar o estado como bronze, set_curtidas, 
     }
 
     public static function all() {

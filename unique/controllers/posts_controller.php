@@ -19,7 +19,13 @@
 
     public function enviardados() {
       // we store all the posts in a variable
-      Post::inserir();
+      if (!isset($_POST['title']))
+        return call('pages', 'error');
+      $title = $_POST['title'];
+      $content = $_POST['content'];
+      $author = $_POST['author'];
+  
+      $post = Post::inserir($title, $content, $author);
       $this->index();
     }
   }
