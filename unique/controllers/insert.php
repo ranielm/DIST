@@ -1,1 +1,0 @@
-<a href='/unique/?controller=posts&action=enviardados&title=<?php echo $title = $_POST['nome']; ?>&content=<?php echo $content = $_POST['email']; ?>&author=<?php echo $author = $_POST['mensagem']; ?>'>Confirmar</a>
