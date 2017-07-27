@@ -50,15 +50,32 @@ class Post {
       //$req->execute(array('id' => $id));
       //$post = $req->fetch();
       //return new Post($post['id'], $post['title'], $post['content'], $post['author']);      
-      session_start();
+      /*session_start();
       $_SESSION['title'] = $title;
       $_SESSION['content'] = $content;
       $_SESSION['author'] = $author;
-      echo $_SESSION['author'];
       $memento = new Caretaker;
-      $memento->addMemento();
+      $memento->addMemento();*/
       return;
     }
+
+    public static function excluirpost($id) {
+      session_start();
+      $_SESSION['id'] = $id;
+      $memento = new Caretaker;
+      $memento->addMemento();
+      $db = Db::getInstance();
+      $originais = "DELETE FROM posts WHERE id = $id";
+      return;
+    }
+
+    public static function voltarMemento($title, $content, $author) {
+      $memento = new Caretaker;
+      $memento->getMemento();
+      return;
+    }
+
+
   }
   class Caretaker
   {
@@ -68,12 +85,17 @@ class Post {
       
     public function addMemento()
     {
-      $title = $_SESSION['title'];
-      $content = $_SESSION['content'];
-      $author = $_SESSION['author']; 
-      echo $_SESSION['content'];
+      $id = $_SESSION['id'];
       $db = Db::getInstance();
-      $req = $db->query("INSERT INTO memento (title, content, author) VALUES ('$title', '$content', '$author')");
+      $originais = "SELECT * FROM posts WHERE id = $id";
+      foreach ($db->query($originais) as $row) 
+      {
+        $title = $row['title'];
+        $content = $row['content'];
+        $author = $row['author'];
+
+        $req = $db->query("INSERT INTO memento (title, content, author) VALUES ('$title', '$content', '$author')");
+      }
       return;
     }
       

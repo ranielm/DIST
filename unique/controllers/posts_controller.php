@@ -32,5 +32,14 @@
     public function inserir() {
       require_once('views/posts/inserir.php');
     }
+
+    public function excluir() {
+      if (!isset($_GET['id']))
+        return call('pages', 'error');
+
+      // we use the given id to get the right post
+      $post = Post::excluirpost($_GET['id']);
+      require_once('views/posts/excluir.php');
+    }
   }
 ?>
