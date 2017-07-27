@@ -26,7 +26,14 @@ $dia2 = date('2017/07/25');
 $dia1formatado = date('d/m/Y', strtotime($dia1));
 $dia2formatado = date('d/m/Y', strtotime($dia2));
 
+//DD/MM/YYYY?
 //$intervalo = $dia1->diff($dia2);
+
+//YYYY/MM/DD
+$time_inicial = strtotime($dia1);
+$time_final = strtotime($dia2);
+$diferenca = $time_final - $time_inicial;
+$dias = (int)floor( $diferenca / (60 * 60 * 24)); // 225 dias
 
 //SESSION
 //session_start();
