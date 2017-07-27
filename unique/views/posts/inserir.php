@@ -1,6 +1,6 @@
 <p>Digite as informações da postagem</p>
 
-<form action="controllers/posts_controller.php" method="post">
+<form action="http://localhost/unique/controllers/posts_controller.php" method="post">
     <div>
         <label for="nome">Nome:</label>
         <input type="text" id="nome" name="nome" />
