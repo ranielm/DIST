@@ -96,7 +96,7 @@ for ($i=0; $i < $dias; $i++) {
 		$fill = !$fill; // to give alternate background fill  color to rows
 	}
 	/// end of records /// 
-	$ontem = date('d/m/Y', strtotime($dia1 .' -1 day'));
+	$ontem = date('Y/m/d', strtotime($dia1 .' -1 day'));
 	$ontemformatado = date('d/m/Y', strtotime($ontem));
 	$_SESSION['dia'] = $ontemformatado;
 }
