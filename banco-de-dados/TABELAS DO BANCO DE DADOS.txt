@@ -1,0 +1,57 @@
+CREATE TABLE IF NOT EXISTS usuarios 
+(
+	id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+	primeironome VARCHAR(30) NOT NULL,
+	segundonome VARCHAR(30) NOT NULL,
+	usuario VARCHAR(20) NOT NULL UNIQUE,
+	senha VARCHAR(30) NOT NULL,
+	email VARCHAR(50) NOT NULL UNIQUE,
+	nivel INT(1) NOT NULL,
+	cargo VARCHAR(30),
+	telefone VARCHAR(15),
+	ativo BOOLEAN NOT NULL, 
+	reg_date TIMESTAMP,
+	KEY nivel (nivel)
+);
+
+INSERT INTO usuarios (primeironome, segundonome, usuario, senha, email, nivel, cargo, telefone, ativo)
+			VALUES ('Raniel', 'Mendonça', 'raniel', '102030', 'ranieel@outlook.com', 3, 'administrador', '+55034992322116', 1);
+
+INSERT INTO usuarios (primeironome, segundonome, usuario, senha, email, nivel, cargo, telefone, ativo)
+			VALUES ('Clóvis', 'Nunes', 'clovis', '102030', 'clobnjuh@gmail.com', 3, 'administrador', '+55034996919766', 1);		
+
+CREATE TABLE IF NOT EXISTS setores
+(
+	id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	nome VARCHAR(30) NOT NULL,
+	reg_date TIMESTAMP
+);
+
+INSERT INTO setores (nome) VALUES ('principal');
+
+CREATE TABLE IF NOT EXISTS produtos
+(
+	id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	nome VARCHAR(60) NOT NULL,
+	quantidadetotal INT,
+	alertadeexpiracao INT,
+	datadeexpiracao DATE,
+	ehperecivel BOOLEAN,
+	fabricante VARCHAR(30),
+	estoqueminimo INT,
+	setor INT(6) UNSIGNED,
+	tipo VARCHAR(30),
+	descricao VARCHAR(30),
+	lote INT(30),
+	insercoestotais BIGINT(8),
+	remocoestotais BIGINT(8),
+	insercoesnodia BIGINT(8),
+	remocoesnodia BIGINT(8),
+	emprestado BOOLEAN,
+	reg_date TIMESTAMP,
+
+    FOREIGN KEY (setor) REFERENCES setores (ID)
+);
+
+INSERT INTO produtos (nome, quantidadetotal, alertadeexpiracao, datadeexpiracao, ehperecivel, fabricante, estoqueminimo, setor, tipo, descricao, lote, insercoestotais, remocoestotais, insercoesnodia, remocoesnodia, emprestado) 
+			VALUES ('caneta', 10, 15, '10/08/2017', 0, 'bic', 10, 1, 'caneta', 'Canetas para escritório', 1, 1, 0, 1, 0, 0);
