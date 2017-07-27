@@ -178,6 +178,7 @@ PRESSIONAR O BOTAO NO HTML DA VIEW, EXECUTA O SEGUINTE>
 $controle->pressionarBotao();
 */
 
+/*
 //STATE
     abstract class State{
         public $post;
@@ -272,72 +273,5 @@ $controle->pressionarBotao();
                     $this->estado = new StatePrata($this->post);
             }
         }           
-
-    //OBSERVER 
-    //add observer
-    public function attach(\SplObserver $observer) {
-        $this->observers[] = $observer;
-    }
-
-    //remove observer
-    public function detach(\SplObserver $observer) {
-        
-        $key = array_search($observer,$this->observers, true);
-        if($key){
-            unset($this->observers[$key]);
-        }
-    }
-
-    //set breakouts news
-    public function breakOutNews($content) {
-        $this->content = $content;
-        $this->notify();
-    }
-
-    public function getContent() {
-        return $this->content." ({$this->name})";
-    }
-
-    //notify observers(or some of them)
-    public function notify() {
-        foreach ($this->observers as $value) {
-            $value->update($this);
-        }
-    }
-}
-
-class Reader implements SplObserver{
-    
-    private $name;
-    
-    public function __construct($name) {
-        $this->name = $name;
-    }
-    
-    public function update(\SplSubject $subject) {
-        echo $this->name.' está lendo as novas notícias <b>'.$subject->getContent().'</b><br>';
-    }
-
-    /*public function update(\SplSubject $subject) {
-        $subject->getContent();
-        
-    }*/
-}
-
-$post = new Post('Create');
-
-$diego = new Reader('Diego');
-$amanda = new Reader('Amanda');
-$raniel = new Reader('Raniel');
-
-//add reader
-$post->attach($diego);
-$post->attach($amanda);
-$post->attach($raniel);
-
-//remove reader
-$post->detach($raniel);
-
-//set break outs
-$post->breakOutNews('Novidades Unique');      
+        */
 ?>
