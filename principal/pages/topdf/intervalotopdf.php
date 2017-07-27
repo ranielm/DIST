@@ -54,13 +54,15 @@ $pdf = new FPDF();
 
 for ($i=0; $i < $dias; $i++) { 
 	$dia1 = $_SESSION['dia'];
+	$ontem1 = strtotime('-1 day', $dia1);
+  	$ontem  = gmdate($date_format, $ontem1);
 	$count="select * from relatorios WHERE datadodia = '$dia1'"; // SQL to get 10 records 
 	//$linhas = $mysqli_num_rows($count);
 
 	$pdf->AddPage();
 
 	//$data = date('d/m/Y');
-	$titulo = "Estado do banco em " . $dia1formatado . "D" . $dias . "L" . $linhas;
+	$titulo = "Estado do banco em " . $dia1formatado . $ontem;
 
 	$pdf->SetTitle($titulo);
 
