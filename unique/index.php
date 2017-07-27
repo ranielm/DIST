@@ -9,7 +9,5 @@
     $action     = 'home';
   }
 
-  require_once('login.php');
-
   require_once('views/layout.php');
 ?>
