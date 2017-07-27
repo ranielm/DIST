@@ -19,12 +19,14 @@ $diaformatado = $_SESSION['diaformatado'];*/
 //$hoje = date('d/m/Y');
 
 $dia1 = date('2017/07/26');
-$dia2 = date('Y/m/d');
+$dia2 = date('2017/07/25');
 
 //DIAS FORMATADOS E NÃO FORMATADOS
 //$diasemformatacao = $_POST['diaescolhido'];
 $dia1formatado = date('d/m/Y', strtotime($dia1));
 $dia2formatado = date('d/m/Y', strtotime($dia2));
+
+$intervalo = $dia1->diff($dia2);
 
 //SESSION
 //session_start();
@@ -40,7 +42,7 @@ $pdf = new FPDF();
 $pdf->AddPage();
 
 //$data = date('d/m/Y');
-$titulo = "Estado do banco em " . $dia1formatado;
+$titulo = "Estado do banco em " . $dia1formatado . $intervalo;
 
 $pdf->SetTitle($titulo);
 
