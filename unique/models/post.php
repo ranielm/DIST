@@ -79,10 +79,22 @@ class Post {
       
     public function getMemento()
     {
-      $this->caretakerStorage = file_get_contents("store.json");
-      $jsonData = json_decode($this->caretakerStorage,true);
-      $this->storage= $jsonData["hold"][0];
-      return $this->storage;
+      $db = Db::getInstance();
+      $originais = "SELECT * FROM memento";
+
+      foreach ($db->query($originais) as $row) 
+      {
+        $title = $row['title'];
+        $content = $row['content'];
+        $author = $row['author'];
+
+        $insere = "INSERT INTO posts (title, content, author) VALUES ('$title', '$content', '$author')";
+        $db->query($insere);
+
+        $delete = "DELETE FROM memento";
+        $db->query($delete);
+      }
+      
     }
   }
 ?>
