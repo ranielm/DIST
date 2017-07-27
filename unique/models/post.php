@@ -1,12 +1,11 @@
 <?php
-class Post implements \SplSubject{
+class Post {
     // we define 3 attributes
     // they are public so that we can access them using $post->author directly
     public $id;
     public $title;
     public $content;
     public $author;
-    public $observers = array();
 
     public function __construct($id, $title, $content, $author) {
       $this->id      = $id;
@@ -128,7 +127,9 @@ class Post implements \SplSubject{
         $delete = "DELETE FROM memento";
         $db->query($delete);
       }
+
       return;
+      
     }
   }
 ?>
