@@ -28,5 +28,9 @@
       $post = Post::inserir($title, $content, $author);
       $this->index();
     }
+
+    public function inserir() {
+      require_once('views/posts/inserir.php');
+    }
   }
 ?>
