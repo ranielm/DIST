@@ -11,6 +11,12 @@ $_SESSION['dia1'] = $_POST['dia1'];
 $_SESSION['dia2formatado'] = date('d/m/Y', strtotime($_POST['dia2']));
 $_SESSION['dia1formatado'] = date('d/m/Y', strtotime($_POST['dia1']));
 
+$dia2 = $_SESSION['dia2'];
+$dia1 = $_SESSION['dia1'];
+
+$dia2formatado = $_SESSION['dia2formatado'];
+$dia1formatado = $_SESSION['dia1formatado'];
+
 /*$dia2formatado = date('d/m/Y', strtotime($_SESSION['dia2']));
 $dia2 = $_POST['dia2'];
 
@@ -26,7 +32,7 @@ $dia1 = $_POST['dia1'];*/
 
 //VERIFICA SE DIA EXISTE
 $connect = mysqli_connect("localhost", "root", "banco", "dist");
-$query = "SELECT * FROM relatorios WHERE datadodia = '$_SESSION['dia2']'";
+$query = "SELECT * FROM relatorios WHERE datadodia = '$dia2'";
 $result = mysqli_query($connect, $query);
 
 //SE NÃO EXISTE E O DIA FOR O DE HOJE, EXIBE PRODUTOS ATUALMENTE
@@ -42,12 +48,12 @@ if(mysqli_num_rows($result) == 0)
 
 //CONEXÃO COM O BANCO
 $connect = mysqli_connect("localhost", "root", "banco", "dist");
-$sql = "SELECT * FROM relatorios WHERE datadodia = '$_SESSION['dia2formatado']'";  
+$sql = "SELECT * FROM relatorios WHERE datadodia = '$dia2'";  
 $result = mysqli_query($connect, $sql);
 ?>
 <html>  
  <head>  
-  <title>Estado do banco em <?php echo $data; ?></title>  
+  <title>Estado do banco em <?php echo $dia2; ?></title>  
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
