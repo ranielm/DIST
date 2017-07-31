@@ -52,9 +52,6 @@ if ($mysqli->connect_error)
     	$total3 = $row["insercoesnodia"] + $quantidadetotal; 
       $id = $row["id"];*/
 
-      echo "id is set\n";
-      echo "usuario = $usuario";
-
       $atualiza = "UPDATE usuarios SET usuario = '$usuario', primeironome = '$fname', segundonome = '$lname', 
       senha = '$senha', email = '$email', nivel = '$usertype', cargo = '$role', telefone = '$phone'
       WHERE id = '$id'";
@@ -62,8 +59,6 @@ if ($mysqli->connect_error)
       if($mysqli->query($atualiza) === TRUE)
       {
        echo "<script>alert('Usuário $usuario atualizado.');window.location='http://10.15.109.203/principal/pages/exibirusuarios.php';</script>";      
-      } else {
-        echo "erro sql.";
       }
     	//echo $row["id"];
 		//echo "<script>alert('Nome do produto já cadastrado.');window.location='http://10.15.109.203/principal/pages/cadastrarprodutos.php';</script>";      

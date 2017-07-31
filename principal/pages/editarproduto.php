@@ -3,6 +3,30 @@ if (!isset($_SESSION))
         {
             session_start();
         }
+        $id = $_REQUEST['id'];
+
+          //TESTA A CONEXÃO COM O BANCO
+        $host        = "localhost";
+        $dbname      = "dist";
+        $user        = "root";
+        $pass        = "banco";
+
+        $db = mysqli_connect($host, $user, $pass, $dbname);
+
+
+        if(!$db) 
+        {
+          echo "Erro : Indisponível para abrir a conexão com o banco de dados\n";
+        } else 
+        {
+          $nl=chr(10);
+          $texto = "Conexão com o banco de dados aberta com sucesso";
+          // echo nl2br($texto);
+        }
+
+        $sql = "SELECT * FROM produtos WHERE id = $id;";
+        $result = mysqli_query($db, $sql);
+        $row1 = mysqli_fetch_assoc($result);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -214,7 +238,7 @@ if (!isset($_SESSION))
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Cadastrar Produtos</h1>
+                    <h1 class="page-header">Editar Produtos</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -242,25 +266,28 @@ if (!isset($_SESSION))
                         <!--REGISTERPRODUCT-->
                         <div id="register" class="animate form">
                             <form  action="inserirprodutos.php" method="post" autocomplete="on"> 
-                                
+                                <p> 
+                                    <label for="id" class="id" >ID do produto</label>
+                                    <input id="id" name="id" required="required" type="text" placeholder="id" value="<?php echo $row1['id']; ?>" readonly="readonly"/>
+                                </p>
                                 <p> 
                                     <label for="nome" class="nome" >Nome do produto:</label>
-                                    <input id="nome" name="nome" required="required" type="text" placeholder=" Nome" />
+                                    <input id="nome" name="nome" required="required" type="text" placeholder=" Nome" value="<?php echo $row1['nome']; ?>" />
                                 </p>
                                 
                                 <p> 
                                     <label for="quantidadetotal" class="quantidadetotal"  >Quantidade a inserir:</label>
-                                    <input max="9999999999" min="1" id="quantidadetotal" name="quantidadetotal" required="required" type="number" placeholder=" 1"/> 
+                                    <input max="9999999999" min="1" id="quantidadetotal" name="quantidadetotal" required="required" type="number" placeholder=" 1" value="<?php echo $row1['quantidadetotal']; ?>" /> 
                                 </p>
                                 
                                 <p> 
                                     <label for="alertadeexpiracao" class="alertadeexpiracao"  >Alerta de expiração em dias:</label>
-                                    <input max="25" min="15" id="alertadeexpiracao" name="alertadeexpiracao" required="required" type="number" placeholder=" 15"/> 
+                                    <input max="25" min="15" id="alertadeexpiracao" name="alertadeexpiracao" required="required" type="number" placeholder=" 15" value="<?php echo $row1['alertadeexpiracao']; ?>" /> 
                                 </p>
                                 
                                 <p> 
                                     <label for="datadeexpiracao" class="datadeexpiracao" >Qual a validade desses produtos?</label>
-                                    <input id="datadeexpiracao" min="2017-07-17" max="2060-01-01" name="datadeexpiracao" required="required" type="date" placeholder="2017-07-17"/>
+                                    <input id="datadeexpiracao" min="2017-07-17" max="2060-01-01" name="datadeexpiracao" required="required" type="date" placeholder="2017-07-17" value="<?php echo $row1['datadeexpiracao']; ?>" />
                                 </p>
                                 
                                 <p> 
@@ -275,12 +302,12 @@ if (!isset($_SESSION))
                                 
                                 <p> 
                                     <label for="fabricante" class="fabricante" >Nome do fabricante:</label>
-                                    <input id="fabricante" name="fabricante" type="text" placeholder=" Fabricante" />
+                                    <input id="fabricante" name="fabricante" type="text" placeholder=" Fabricante" value="<?php echo $row1['fabricante']; ?>" />
                                 </p>
                                 
                                 <p> 
                                     <label for="estoqueminimo" class="estoqueminimo"  >Quantidade em estoque mínimo:</label>
-                                    <input max="99999999" min="1" id="estoqueminimo" name="estoqueminimo" required="required" type="number" placeholder=" 1"/> 
+                                    <input max="99999999" min="1" id="estoqueminimo" name="estoqueminimo" required="required" type="number" placeholder=" 1" value="<?php echo $row1['estoqueminimo']; ?>" /> 
                                 </p>
                                 
                                 <p> 
@@ -296,7 +323,7 @@ if (!isset($_SESSION))
   
                                 <p> 
                                     <label for="tipo" class="tipo" >Tipo do produto:</label>
-                                    <input name="tipo" id="tipo" tipo="tipo" type="text" placeholder=" Tipo" />
+                                    <input name="tipo" id="tipo" tipo="tipo" type="text" placeholder=" Tipo" value="<?php echo $row1['tipo']; ?>" />
                                 </p>
 
                                 </p>
