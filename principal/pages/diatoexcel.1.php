@@ -3,31 +3,24 @@
 $hoje = date('d/m/Y');
 
 //DIAS FORMATADOS E NÃO FORMATADOS
-$dia2 = $_POST['dia2'];
-$dia2formatado = date('d/m/Y', strtotime($_POST['dia2']));
-
-$dia1 = $_POST['dia1'];
-$dia1formatado = date('d/m/Y', strtotime($_POST['dia1']));
-
+$diasemformatacao = $_POST['diaescolhido'];
+$diaformatado = date('d/m/Y', strtotime($_POST['diaescolhido']));
 
 //SESSION
 session_start();
-$_SESSION['dia2'] = $dia2;
-//$_SESSION['dia2formatado'] = $dia2formatado;
-
-$_SESSION['dia1'] = $dia1;
-//$_SESSION['dia1formatado'] = $dia1formatado;
+$_SESSION['diasemformatacao'] = $diasemformatacao;
+$_SESSION['diaformatado'] = $diaformatado;
 
 //VERIFICA SE DIA EXISTE
 $connect = mysqli_connect("localhost", "root", "banco", "dist");
-$query = "SELECT * FROM relatorios WHERE datadodia = '$dia2'";
+$query = "SELECT * FROM relatorios WHERE datadodia = '$diasemformatacao'";
 $result = mysqli_query($connect, $query);
 
 //SE NÃO EXISTE E O DIA FOR O DE HOJE, EXIBE PRODUTOS ATUALMENTE
 //SE NÃO EXISTE E NÃO FOR HOJE, SEM DADOS PARA EXIBIR
 if(mysqli_num_rows($result) == 0)
 {
-  if($hoje == $dia2formatado)
+  if($hoje == $diaformatado)
   {
     echo "<script>window.location='http://10.15.109.203/principal/pages/exibehoje.php';</script>";      
   }
@@ -36,7 +29,7 @@ if(mysqli_num_rows($result) == 0)
 
 //CONEXÃO COM O BANCO
 $connect = mysqli_connect("localhost", "root", "banco", "dist");
-$sql = "SELECT * FROM relatorios WHERE datadodia = '$dia2'";  
+$sql = "SELECT * FROM relatorios WHERE datadodia = '$diasemformatacao'";  
 $result = mysqli_query($connect, $sql);
 ?>
 <html>  
@@ -52,7 +45,7 @@ $result = mysqli_query($connect, $sql);
    <br />  
    <br />  
    <div class="table-responsive">  
-    <h2 align="center">Estado do banco no dia <?php echo $dia2formatado; ?></h2><br /> 
+    <h2 align="center">Estado do banco no dia <?php echo $diaformatado; ?></h2><br /> 
     <table class="table table-bordered">
     <tr>  
         <th>Nome do produto</th>  
@@ -82,7 +75,7 @@ $result = mysqli_query($connect, $sql);
     <form method="post" action="exportexcel.php">
      <input type="submit" name="export" class="btn btn-success" value="Gerar relatório em Excel" />
     </form>
-    <a href="http://10.15.109.203/principal/pages/topdf/intervalotopdf.php" target="_blank"><input type="submit" name="export" class="btn btn-info" value="Gerar relatório em PDF" /></a>
+    <a href="http://10.15.109.203/principal/pages/topdf/diatopdf.php" target="_blank"><input type="submit" name="export" class="btn btn-info" value="Gerar relatório em PDF" /></a>
     <p>
     <p>
     <a class="btn btn-danger" href="index.php" role="button">Voltar ao início</a> <a class="btn btn-danger" href="diatoexcelpdf.php" role="button">Voltar aos relatórios</a>
