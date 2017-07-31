@@ -9,8 +9,7 @@ $phone = $_POST['phone'];
 $usertype = $_POST['usertype'];
 $senha = $_POST['password'];
 $conf_senha = $_POST['password_confirm'];
-$ativo = $_POST['ativo'];
-$id = $_POST['idusu'];
+$id = $_POST['id'];
 
 //EXIBE O ARRAY COM OS DADOS PASSADOS
 //var_dump($_POST);
@@ -40,6 +39,38 @@ if ($mysqli->connect_error)
     $erro = 0;
 
 
+    
+
+	//print_r($resultado);
+    if(isset($id))
+    {
+        /*$buscanome = "SELECT * FROM usuarios WHERE id = '$idusu'";
+        $resultado = $mysqli->query($buscanome);
+    	$row = $resultado->fetch_assoc();
+    	$total1 = $row["quantidadetotal"] + $quantidadetotal; 
+    	$total2 = $row["insercoestotais"] + $quantidadetotal; 
+    	$total3 = $row["insercoesnodia"] + $quantidadetotal; 
+      $id = $row["id"];*/
+
+      echo "id is set\n";
+      echo "usuario = $usuario";
+
+      $atualiza = "UPDATE usuarios SET usuario = '$usuario', primeironome = '$fname', segundonome = '$lname', 
+      senha = '$senha', email = '$email', nivel = '$usertype', cargo = '$role', telefone = '$phone'
+      WHERE id = '$id'";
+
+      if($mysqli->query($atualiza) === TRUE)
+      {
+       echo "<script>alert('Usuário $usuario atualizado.');window.location='http://10.15.109.203/principal/pages/exibirusuarios.php';</script>";      
+      } else {
+        echo "erro sql.";
+      }
+    	//echo $row["id"];
+		//echo "<script>alert('Nome do produto já cadastrado.');window.location='http://10.15.109.203/principal/pages/cadastrarprodutos.php';</script>";      
+		//$sql = "UPDATE produtos SET lastname='Doe' WHERE id=2";
+
+} else if ($erro == 0) {
+
     if($resultadousu->num_rows > 0) {
         echo "<script>alert('Usuário $usuario já existe.');window.location='http://10.15.109.203/principal/pages/cadastrarusuarios.php';</script>";
         $erro = 1;
@@ -51,31 +82,10 @@ if ($mysqli->connect_error)
         $erro = 1;
     }
 
-	//print_r($resultado);
-    if(isset($id) && $erro == 0)
-    {
-        /*$buscanome = "SELECT * FROM usuarios WHERE id = '$idusu'";
-        $resultado = $mysqli->query($buscanome);
-    	$row = $resultado->fetch_assoc();
-    	$total1 = $row["quantidadetotal"] + $quantidadetotal; 
-    	$total2 = $row["insercoestotais"] + $quantidadetotal; 
-    	$total3 = $row["insercoesnodia"] + $quantidadetotal; 
-      $id = $row["id"];*/
-
-      $atualiza = "UPDATE usuarios SET usuario = $usuario, primeironome = $fname, segundonome = $lname, 
-      senha = $senha, email = $email, nivel = $usertype, cargo = $role, telefone = $phone, ativo = $ativo
-      WHERE id = $id";
-
-      if($mysqli->query($atualiza) === TRUE)
-      {
-       echo "<script>alert('Usuário $usuario atualizado.');window.location='http://10.15.109.203/principal/pages/exibirusuarios.php';</script>";      
-   }
-    	//echo $row["id"];
-		//echo "<script>alert('Nome do produto já cadastrado.');window.location='http://10.15.109.203/principal/pages/cadastrarprodutos.php';</script>";      
-		//$sql = "UPDATE produtos SET lastname='Doe' WHERE id=2";
-
-} else if ($erro == 0) {
-    $sql = "INSERT INTO usuarios (usuario, primeironome, segundonome, senha, email, nivel, cargo, telefone, ativo) VALUES ('$usuario', '$fname', '$lname', '$senha', '$email', '$usertype', '$role', '$phone', '$ativo')";
+    if($erro == 0) {
+      $sql = "INSERT INTO usuarios (usuario, primeironome, segundonome, senha, email, nivel, cargo, telefone, ativo) VALUES ('$usuario', '$fname', '$lname', '$senha', '$email', '$usertype', '$role', '$phone', '$ativo')";
+    }
+    
  if($mysqli->query($sql) === TRUE)
  {
    echo "<script>alert('Usuário cadastrado.');window.location='http://10.15.109.203/principal/pages/exibirusuarios.php';</script>";      

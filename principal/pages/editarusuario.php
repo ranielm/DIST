@@ -3,9 +3,10 @@ if (!isset($_SESSION))
         {
             session_start();
         }
-        header('Content-Type: text/html; charset=utf-8');
 
-        //TESTA A CONEXÃO COM O BANCO
+        $id = $_REQUEST['id'];
+
+          //TESTA A CONEXÃO COM O BANCO
         $host        = "localhost";
         $dbname      = "dist";
         $user        = "root";
@@ -23,6 +24,10 @@ if (!isset($_SESSION))
           $texto = "Conexão com o banco de dados aberta com sucesso";
           // echo nl2br($texto);
         }
+
+        $sql = "SELECT * FROM usuarios WHERE id = $id;";
+        $result = mysqli_query($db, $sql);
+        $row1 = mysqli_fetch_assoc($result);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,7 +40,7 @@ if (!isset($_SESSION))
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>DIST - PRODUTO</title>
+    <title>DIST - USUÁRIOS</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -174,16 +179,16 @@ if (!isset($_SESSION))
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="http://localhost/principal/pages/index.php"><i class="fa fa-dashboard fa-fw"></i> Principal</a>
+                            <a href="http://10.15.109.203/principal/pages/index.php"><i class="fa fa-home fa-fw"></i> Principal</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-users fa-fw"></i> Usuários<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="http://localhost/principal/pages/cadastrarusuarios.php">Cadastrar usuário</a>
+                                    <a href="http://10.15.109.203/principal/pages/cadastrarusuarios.php">Cadastrar usuário</a>
                                 </li>
                                 <li>
-                                    <a href="http://localhost/principal/pages/exibirusuarios.php">Exibir usuários</a>
+                                    <a href="http://10.15.109.203/principal/pages/exibirusuarios.php">Exibir usuários</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -192,10 +197,34 @@ if (!isset($_SESSION))
                             <a href="#"><i class="fa fa-product-hunt fa-fw"></i> Produtos<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="http://localhost/principal/pages/cadastrarprodutos.php">Cadastrar produto</a>
+                                    <a href="http://10.15.109.203/principal/pages/cadastrarprodutos.php">Cadastrar produto</a>
                                 </li>
                                 <li>
-                                    <a href="http://localhost/principal/pages/exibirprodutos.php">Exibir produtos</a>
+                                    <a href="http://10.15.109.203/principal/pages/exibirprodutos.php">Exibir produtos</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-calendar fa-fw"></i> Relatórios<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="http://10.15.109.203/principal/pages/diatoexcelpdf.php">Escolha um dia</a>
+                                </li>
+                                <li>
+                                    <a href="http://10.15.109.203/principal/pages/intervalotoexcelpdf.php">Entre intervalos</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-industry fa-fw"></i> Setores<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="http://10.15.109.203/principal/pages/cadastrarsetores.php">Cadastrar setor</a>
+                                </li>
+                                <li>
+                                    <a href="http://10.15.109.203/principal/pages/exibirsetores.php">Exibir setores</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -210,70 +239,104 @@ if (!isset($_SESSION))
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Lista de usuários</h1>
+                    <h1 class="page-header">Editar Usuários</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
 
-            <div class="col-lg-10">
+            <div class="row">
+                <div class="col-lg-6">
                     <!-- /.panel -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> Informações sobre os usuários
+                            <i class="fa fa-user fa-fw"></i> Insira aqui as informações do usuário
                             <div class="pull-right">
                             </div>
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered table-hover table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th>Código</th>
-                                                    <th>Nome</th>
-                                                    <th>Email</th>
-                                                    <th>Telefone</th>
-                                                    <th>Tipo de usuário</th>
-                                                    <th>Cargo</th>
-                                                    <th>Ações</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php 
-                                                $sql = "SELECT * FROM usuarios;";
-                                                $result = mysqli_query($db, $sql);
+            <section>				
+                <div id="container_demo" >
+                    <!-- hidden anchor to stop jump http://www.css3create.com/Astuce-Empecher-le-scroll-avec-l-utilisation-de-target#wrap4  -->
 
-                                                if (mysqli_num_rows($result) > 0) {
-                                                // output data of each row
-                                                  while($row = mysqli_fetch_assoc($result)) {
-                                                    echo "<tr>
-                                                            <td>" . $row['id'] .  "</td>
-                                                            <td>" . $row['primeironome'] .  "</td>
-                                                            <td>" . $row['email'] .  "</td>
-                                                            <td>" . $row['telefone'] .  "</td>
-                                                            <td>" . $row['nivel'] .  "</td>
-                                                            <td>" . $row['cargo'] .  "</td>
-                                                            <td> 
-                                                            <a class='glyphicon glyphicon-edit' href='editarusuario.php?id=" . $row['id'] . "'></a>
-                                                            <a class='glyphicon glyphicon-remove' href='index.php'> </a>
+                    <a class="hiddenanchor" id="toregister"></a>
+                    <a class="hiddenanchor" id="tologin"></a>
 
-                                                        </td>
-                                                        </tr>";
+                    <div id="wrapper">
+                        <div id="login" class="animate form">
+                            <form  action="inserirusuarios.php" method="post" autocomplete="on"> 
+                                <!--REGISTERUSER-->
 
-                                              }
-                                          } else {
-                                              echo "Nenhum produto cadastrado.";
-                                          }
+                                <p> 
+                                    <label for="id" class="id" >ID do usuário</label>
+                                    <input id="id" name="id" required="required" type="text" placeholder="id" value="<?php echo $row1['id']; ?>" readonly="readonly"/>
+                                </p>  
+                                <p> 
+                                    <label for="usernamesignup" class="username" >Nome de usuário</label>
+                                    <input id="usernamesignup" name="username" required="required" type="text" placeholder="usuário" value="<?php echo $row1['usuario']; ?>" />
+                                </p>
+                                <p> 
+                                    <label for="fname" class="name" >Primeiro nome</label>
+                                    <input id="fname" name="fname" required="required" type="text" placeholder="José, João" value="<?php echo $row1['primeironome']; ?>" />
+                                </p>
+                                <p> 
+                                    <label for="lname" class="name" >Segundo nome</label>
+                                    <input id="lname" name="lname" required="required" type="text" placeholder="Sousa, Vieira" value="<?php echo $row1['segundonome']; ?>" />
+                                </p>
+                                <p> 
+                                    <label for="emailsignup" class="mail"  > Informe o email</label>
+                                    <input id="emailsignup" name="mail" required="required" type="email" placeholder="email@servidoremail.com" value="<?php echo $row1['email']; ?>" /> 
+                                </p>
+                                <p> 
+                                    <label for="role" class="role"  > Informe o cargo</label>
+                                    <input id="role" name="role" required="required" type="text" placeholder="função" value="<?php echo $row1['cargo']; ?>" /> 
+                                </p>
+                                <p> 
+                                    <label for="phone" class="phone" >Digite o número do telefone do usuário</label>
+                                    <input id="phone" name="phone" required="required" type="tel" placeholder="0349..." value="<?php echo $row1['telefone']; ?>" />
+                                </p>
+                                <p> 
+                                    <label for="type" class="usertype"  > Informe o tipo do usuário</label>
+                                    <input id="type" name="usertype" required="required" type="number" placeholder="0,1..." value="<?php echo $row1['nivel']; ?>" /> 
+                                </p>
+                                <p> 
+                                    <label for="passwordsignup" class="youpasswd" >Utilize uma senha forte </label>
+                                    <input id="passwordsignup" name="password" required="required" type="password" placeholder="ex. X8df!90EO" value="<?php echo $row1['senha']; ?>" />
+                                </p>
+                                <p> 
+                                    <label for="passwordsignup_confirm" class="youpasswd" >Por favor confirme a senha </label>
+                                    <input id="passwordsignup_confirm" name="password_confirm" required="required" type="password" placeholder="ex. X8df!90EO" value="<?php echo $row1['senha']; ?>"/>
+                                </p>
 
+                                <button type="submit" class="btn btn-primary">Cadastrar</button>
+                                <a class="btn btn-info" href="index.php" role="button">Voltar ao início</a>
+                                <!--<p class="signin button"> 
+=======
+                                <p> 
+                                <label>Usuário ativo?</label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="ativo" id="ativo" value="1" checked>Sim
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="ativo" id="ativo" value="0">Não
+                                    </label>
+                                </p>
 
-                                          ?>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <!-- /.table-responsive -->
-                                </div>
+                                <p class="signin button"> 
+>>>>>>> 40876b9b4106675de479af86b001c711ea62dc1a
+                                    <input type="submit" value="Cadastrar"/> 
+                                </p>-->
+
+                                <!-- <p class="change_link">
+                                    Terminou?
+                                    <a href="#toregister" class="to_register">Cadastrar produto</a>
+                                </p> -->
+                            </form>
+                        </div>
+						
+                    </div>
+                </div>  
+            </section>                                </div>
                                 <!-- /.col-lg-4 (nested) -->
                             </div>
                             <!-- /.row -->
@@ -281,10 +344,6 @@ if (!isset($_SESSION))
                         <!-- /.panel-body -->
                     </div>
                 </div>
-
-
-            
-        </div>
                 
             </div>
             <!-- /.row -->
