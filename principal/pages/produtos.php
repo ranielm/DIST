@@ -48,7 +48,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">DIST</a>
+                <a class="navbar-brand" href="index.php">DIST</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -233,7 +233,7 @@
                             <a href="#"><i class="fa fa-users fa-fw"></i> Usuários<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="http://dist.000webhostapp.com/cadastrar-usuario/index.html">Cadastrar usuário</a>
+                                    <a href="http://dist.000webhostapp.com/cadastrar-usuario/index.php">Cadastrar usuário</a>
                                 </li>
                                 <li>
                                     <a href="http://dist.000webhostapp.com/principal/pages/usuarios.php">Exibir usuários</a>
@@ -251,7 +251,7 @@
                             <a href="#"><i class="fa fa-product-hunt fa-fw"></i> Produtos<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="http://dist.000webhostapp.com/cadastrar-produto/index.html">Cadastrar produto</a>
+                                    <a href="http://dist.000webhostapp.com/cadastrar-produto/index.php">Cadastrar produto</a>
                                 </li>
                                 <li>
                                     <a href="http://dist.000webhostapp.com/principal/pages/produtos.php">Exibir produtos</a>
