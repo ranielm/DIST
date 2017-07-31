@@ -56,7 +56,7 @@ for ($i=0; $i < $dias; $i++) {
 	$pdf->AddPage();
 	$diaformatado = date('d/m/Y', strtotime($dia1));
 	//$data = date('d/m/Y');
-	$titulo = "Estado do banco em " . $diaformatado;
+	$titulo = "Estado do banco em " . $dia1;
 
 	$pdf->SetTitle($titulo);
 
