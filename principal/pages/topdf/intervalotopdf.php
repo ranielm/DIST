@@ -10,17 +10,25 @@ if(!file_exists('font')){
 exit;	
 }
 
-//FUNCIONANDO ESTATICAMENTE
-/*$dia2 = date('2017/07/25');
-$dia1 = date('2017/07/26');*/
+session_start();
 
 $dia2 = $_SESSION['dia2'];
 $dia1 = $_SESSION['dia1'];
 
+$dia2formatado = $_SESSION['dia2formatado'];
+$dia1formatado = $_SESSION['dia1formatado'];
+
+//FUNCIONANDO ESTATICAMENTE
+/*$dia2 = date('2017/07/25');
+$dia1 = date('2017/07/26');*/
+
+//$dia2 = $_SESSION['dia2'];
+//$dia1 = $_SESSION['dia1'];
+
 //DIAS FORMATADOS E NÃO FORMATADOS
 //$diasemformatacao = $_POST['diaescolhido'];
-$dia2formatado = date('d/m/Y', strtotime($dia2));
-$dia1formatado = date('d/m/Y', strtotime($dia1));
+//$dia2formatado = date('d/m/Y', strtotime($dia2));
+//$dia1formatado = date('d/m/Y', strtotime($dia1));
 
 //DD/MM/YYYY?	
 //$intervalo = $dia1->diff($dia2);
@@ -54,7 +62,7 @@ for ($i=0; $i < $dias; $i++) {
 	//$linhas = $mysqli_num_rows($count);
 
 	$pdf->AddPage();
-	$dia2formatado = date('d/m/Y', strtotime($_SESSION['dia2']));
+	$dia2formatado = $_SESSION['dia2formatado'];
 	//$diaformatado = date('d/m/Y', strtotime($dia2));
 	//$data = date('d/m/Y');
 	$titulo = "Estado do banco em " . $dia2formatado;
