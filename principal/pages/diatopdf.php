@@ -2,17 +2,22 @@
 //DATA DE HOJE
 $hoje = date('d/m/Y');
 
+session_start();
+
 //DIAS FORMATADOS E NÃO FORMATADOS
 $_SESSION['dia2'] = $_POST['dia2'];
-$dia2formatado = date('d/m/Y', strtotime($_SESSION['dia2']));
+$_SESSION['dia1'] = $_POST['dia1'];
+
+$_SESSION['dia2formatado'] = date('d/m/Y', strtotime($_POST['dia2']));
+$_SESSION['dia1formatado'] = date('d/m/Y', strtotime($_POST['dia1']));
+
+/*$dia2formatado = date('d/m/Y', strtotime($_SESSION['dia2']));
 $dia2 = $_POST['dia2'];
 
-$_SESSION['dia1'] = $_POST['dia1'];
 $dia1formatado = date('d/m/Y', strtotime($_SESSION['dia1']));
-$dia1 = $_POST['dia1'];
+$dia1 = $_POST['dia1'];*/
 
 //SESSION
-session_start();
 //$_SESSION['dia2'] = $dia2;
 //$_SESSION['dia2formatado'] = $dia2formatado;
 
@@ -21,7 +26,7 @@ session_start();
 
 //VERIFICA SE DIA EXISTE
 $connect = mysqli_connect("localhost", "root", "banco", "dist");
-$query = "SELECT * FROM relatorios WHERE datadodia = '$dia2'";
+$query = "SELECT * FROM relatorios WHERE datadodia = '$_SESSION['dia2']'";
 $result = mysqli_query($connect, $query);
 
 //SE NÃO EXISTE E O DIA FOR O DE HOJE, EXIBE PRODUTOS ATUALMENTE
@@ -37,7 +42,7 @@ if(mysqli_num_rows($result) == 0)
 
 //CONEXÃO COM O BANCO
 $connect = mysqli_connect("localhost", "root", "banco", "dist");
-$sql = "SELECT * FROM relatorios WHERE datadodia = '$dia2'";  
+$sql = "SELECT * FROM relatorios WHERE datadodia = '$_SESSION['dia2formatado']'";  
 $result = mysqli_query($connect, $sql);
 ?>
 <html>  
