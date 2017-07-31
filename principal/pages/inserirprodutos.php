@@ -9,6 +9,7 @@ $fabricante = $_POST['fabricante'];
 $estoqueminimo = $_POST['estoqueminimo'];
 $setor = $_POST['setor'];
 $tipo = $_POST['tipo'];
+$id = $_POST['id'];
 
 //EXIBE O ARRAY COM OS DADOS PASSADOS
 //var_dump($_POST);
@@ -47,20 +48,27 @@ if ($mysqli->connect_error)
 
 else {
 
-	$buscanome = "SELECT * FROM produtos WHERE nome = '$nome'";
+	/*$buscanome = "SELECT * FROM produtos WHERE nome = '$nome'";
+	$resultado = $mysqli->query($buscanome);*/
 
-	$resultado = $mysqli->query($buscanome);
-
-	//print_r($resultado);
-	if($resultado->num_rows > 0)
+	if(isset($id))
     {
-    	$row = $resultado->fetch_assoc();
+    	/*$row = $resultado->fetch_assoc();
     	$total1 = $row["quantidadetotal"] + $quantidadetotal; 
     	$total2 = $row["insercoestotais"] + $quantidadetotal; 
     	$total3 = $row["insercoesnodia"] + $quantidadetotal; 
-		$id = $row["id"];
-    	$atualiza = "UPDATE produtos SET setor = $setor, alertadeexpiracao = $alertadeexpiracao, estoqueminimo = $estoqueminimo,
-		quantidadetotal = $total1, insercoestotais = $total2, insercoesnodia = $total3 WHERE id = $id";
+		$id = $row["id"];*/
+
+    	$atualiza = "UPDATE produtos SET nome = '$nome',
+                            quantidadetotal = '$quantidadetotal',
+                            alertadeexpiracao = '$alertadeexpiracao',
+                            datadeexpiracao = '$datadeexpiracao',
+                            ehperecivel = '$ehperecivel',
+                            fabricante = '$fabricante',
+                            estoqueminimo = '$estoqueminimo',
+                            setor = '$setor',
+                            tipo = '$tipo'
+                     WHERE id = $id";
 
 		if($mysqli->query($atualiza) === TRUE)
     	{
@@ -70,10 +78,7 @@ else {
 		//echo "<script>alert('Nome do produto já cadastrado.');window.location='http://10.15.109.203/principal/pages/cadastrarprodutos.php';</script>";      
 		//$sql = "UPDATE produtos SET lastname='Doe' WHERE id=2";
 
-	}
-
-	if($resultado->num_rows == 0)
-    {
+	} else {
     	$sql = "INSERT INTO produtos (nome, quantidadetotal, alertadeexpiracao, datadeexpiracao, ehperecivel, fabricante, estoqueminimo, setor, tipo, descricao, lote, insercoestotais, remocoestotais, insercoesnodia, remocoesnodia, emprestado) VALUES ('$nome', '$quantidadetotal', '$alertadeexpiracao', '$datadeexpiracao', '$ehperecivel', '$fabricante', '$estoqueminimo', '$setor', '$tipo', '$descricao', '1', '1', '0', '1', '0', '0')";
     	if($mysqli->query($sql) === TRUE)
     	{

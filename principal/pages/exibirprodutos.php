@@ -294,7 +294,7 @@ if (!isset($_SESSION))
                                                             <td>" . $row['insercoesnodia'] .  "</td>
                                                             <td>" . $row['quantidadetotal'] .  "</td>
                                                             <td> 
-                                                            <a class='glyphicon glyphicon-edit' href='index.php'> </a>
+                                                            <a class='glyphicon glyphicon-edit' href='editarproduto.php?id=" . $row['id'] . "'></a>
                                                             <a class='glyphicon glyphicon-remove'  href='index.php'> </a>
                                                             <a class='glyphicon glyphicon-transfer'  href='index.php'> </a>
                                                         </tr>";
