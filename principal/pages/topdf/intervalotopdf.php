@@ -10,9 +10,12 @@ if(!file_exists('font')){
 exit;	
 }
 
-$dia1 = date('2017/07/26');
-$dia2 = date('2017/07/25');
-$_SESSION['dia'] = $dia1;
+//FUNCIONANDO ESTATICAMENTE
+/*$dia2 = date('2017/07/25');
+$dia1 = date('2017/07/26');*/
+
+$dia2 = $_SESSION['dia2'];
+$dia1 = $_SESSION['dia1'];
 
 //DIAS FORMATADOS E NÃO FORMATADOS
 //$diasemformatacao = $_POST['diaescolhido'];

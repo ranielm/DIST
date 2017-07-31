@@ -9,7 +9,6 @@ $dia2formatado = date('d/m/Y', strtotime($_POST['dia2']));
 $dia1 = $_POST['dia1'];
 $dia1formatado = date('d/m/Y', strtotime($_POST['dia1']));
 
-
 //SESSION
 session_start();
 $_SESSION['dia2'] = $dia2;

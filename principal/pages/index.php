@@ -204,10 +204,10 @@ if (!isset($_SESSION))
                             <a href="#"><i class="fa fa-calendar fa-fw"></i> Relatórios<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="http://10.15.109.203/principal/pages/diatoexcelpdf.php">Escolha um dia</a>
+                                    <a href="http://10.15.109.203/principal/pages/diatoexcelpdf.php">Relatório diário de produtos</a>
                                 </li>
                                 <li>
-                                    <a href="http://10.15.109.203/principal/pages/intervalotoexcelpdf.php">Entre intervalos</a>
+                                    <a href="http://10.15.109.203/principal/pages/intervalotoexcelpdf.php">Relatório por datas de produtos</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
