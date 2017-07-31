@@ -22,9 +22,9 @@ if(mysqli_num_rows($result) == 0)
 {
   if($hoje == $diaformatado)
   {
-    echo "<script>window.location='http://10.15.109.203/principal/pages/exibehoje.php';</script>";      
+    echo "<script>window.location='http://localhost/principal/pages/exibehoje.php';</script>";      
   }
-  echo "<script>alert('Sem dados para exibir nesse dia.');window.location='http://10.15.109.203/principal/pages/diatoexcelpdf.php';</script>";      
+  echo "<script>alert('Sem dados para exibir nesse dia.');window.location='http://localhost/principal/pages/diatoexcelpdf.php';</script>";      
 }
 
 //CONEXÃO COM O BANCO
@@ -75,7 +75,7 @@ $result = mysqli_query($connect, $sql);
     <form method="post" action="exportexcel.php">
      <input type="submit" name="export" class="btn btn-success" value="Gerar relatório em Excel" />
     </form>
-    <a href="http://10.15.109.203/principal/pages/topdf/diatopdf.php" target="_blank"><input type="submit" name="export" class="btn btn-info" value="Gerar relatório em PDF" /></a>
+    <a href="http://localhost/principal/pages/topdf/diatopdf.php" target="_blank"><input type="submit" name="export" class="btn btn-info" value="Gerar relatório em PDF" /></a>
     <p>
     <p>
     <a class="btn btn-danger" href="index.php" role="button">Voltar ao início</a> <a class="btn btn-danger" href="diatoexcelpdf.php" role="button">Voltar aos relatórios</a>

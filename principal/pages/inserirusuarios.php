@@ -58,22 +58,22 @@ if ($mysqli->connect_error)
 
       if($mysqli->query($atualiza) === TRUE)
       {
-       echo "<script>alert('Usuário $usuario atualizado.');window.location='http://10.15.109.203/principal/pages/exibirusuarios.php';</script>";      
+       echo "<script>alert('Usuário $usuario atualizado.');window.location='http://localhost/principal/pages/exibirusuarios.php';</script>";      
       }
     	//echo $row["id"];
-		//echo "<script>alert('Nome do produto já cadastrado.');window.location='http://10.15.109.203/principal/pages/cadastrarprodutos.php';</script>";      
+		//echo "<script>alert('Nome do produto já cadastrado.');window.location='http://localhost/principal/pages/cadastrarprodutos.php';</script>";      
 		//$sql = "UPDATE produtos SET lastname='Doe' WHERE id=2";
 
 } else if ($erro == 0) {
 
     if($resultadousu->num_rows > 0) {
-        echo "<script>alert('Usuário $usuario já existe.');window.location='http://10.15.109.203/principal/pages/cadastrarusuarios.php';</script>";
+        echo "<script>alert('Usuário $usuario já existe.');window.location='http://localhost/principal/pages/cadastrarusuarios.php';</script>";
         $erro = 1;
     } else if($resultadomail->num_rows > 0) {
-        echo "<script>alert('Email $email já existe.');window.location='http://10.15.109.203/principal/pages/cadastrarusuarios.php';</script>";
+        echo "<script>alert('Email $email já existe.');window.location='http://localhost/principal/pages/cadastrarusuarios.php';</script>";
         $erro = 1;
     } else if($senha != $conf_senha) {
-         echo "<script>alert('Senhas não conferem.');window.location='http://10.15.109.203/principal/pages/cadastrarusuarios.php';</script>";
+         echo "<script>alert('Senhas não conferem.');window.location='http://localhost/principal/pages/cadastrarusuarios.php';</script>";
         $erro = 1;
     }
 
@@ -83,9 +83,9 @@ if ($mysqli->connect_error)
     
  if($mysqli->query($sql) === TRUE)
  {
-   echo "<script>alert('Usuário cadastrado.');window.location='http://10.15.109.203/principal/pages/exibirusuarios.php';</script>";      
+   echo "<script>alert('Usuário cadastrado.');window.location='http://localhost/principal/pages/exibirusuarios.php';</script>";      
 } else {
-    /*echo "<script>alert('Erro no cadastro do usuário.');window.location='http://10.15.109.203/principal/pages/exibirusuarios.php';</script>"; */
+    /*echo "<script>alert('Erro no cadastro do usuário.');window.location='http://localhost/principal/pages/exibirusuarios.php';</script>"; */
 }
 }    
 }

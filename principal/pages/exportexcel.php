@@ -51,7 +51,7 @@ if(isset($_POST["export"]))
  }
  if(mysqli_num_rows($result) == 0)
  {
-      echo "<script>alert('Sem dados para exibir nesse dia.');window.location='http://10.15.109.203/principal/pages/diatoexcelpdf.php';</script>";      
+      echo "<script>alert('Sem dados para exibir nesse dia.');window.location='http://localhost/principal/pages/diatoexcelpdf.php';</script>";      
  }
 }
 ?>
