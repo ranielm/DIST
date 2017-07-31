@@ -3,18 +3,20 @@
 $hoje = date('d/m/Y');
 
 //DIAS FORMATADOS E NÃO FORMATADOS
+$_SESSION['dia2'] = $_POST['dia2'];
+$dia2formatado = date('d/m/Y', strtotime($_SESSION['dia2']));
 $dia2 = $_POST['dia2'];
-$dia2formatado = date('d/m/Y', strtotime($_POST['dia2']));
 
+$_SESSION['dia1'] = $_POST['dia1'];
+$dia1formatado = date('d/m/Y', strtotime($_SESSION['dia1']));
 $dia1 = $_POST['dia1'];
-$dia1formatado = date('d/m/Y', strtotime($_POST['dia1']));
 
 //SESSION
 session_start();
-$_SESSION['dia2'] = $dia2;
+//$_SESSION['dia2'] = $dia2;
 //$_SESSION['dia2formatado'] = $dia2formatado;
 
-$_SESSION['dia1'] = $dia1;
+//$_SESSION['dia1'] = $dia1;
 //$_SESSION['dia1formatado'] = $dia1formatado;
 
 //VERIFICA SE DIA EXISTE

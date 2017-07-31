@@ -19,8 +19,8 @@ $dia1 = $_SESSION['dia1'];
 
 //DIAS FORMATADOS E NÃO FORMATADOS
 //$diasemformatacao = $_POST['diaescolhido'];
-$dia1formatado = date('d/m/Y', strtotime($dia1));
 $dia2formatado = date('d/m/Y', strtotime($dia2));
+$dia1formatado = date('d/m/Y', strtotime($dia1));
 
 //DD/MM/YYYY?	
 //$intervalo = $dia1->diff($dia2);
@@ -48,15 +48,16 @@ $pdf = new FPDF();
 //DIA1
 
 for ($i=0; $i < $dias; $i++) { 
-	$dia1 = $_SESSION['dia1'];
+	$dia2 = $_SESSION['dia2'];
 	//$dia2 = date('2017/07/26');
-	$count="select * from relatorios WHERE datadodia = '$dia1'"; // SQL to get 10 records 
+	$count="select * from relatorios WHERE datadodia = '$dia2'"; // SQL to get 10 records 
 	//$linhas = $mysqli_num_rows($count);
 
 	$pdf->AddPage();
-	$diaformatado = date('d/m/Y', strtotime($dia1));
+	$dia2formatado = date('d/m/Y', strtotime($_SESSION['dia2']));
+	//$diaformatado = date('d/m/Y', strtotime($dia2));
 	//$data = date('d/m/Y');
-	$titulo = "Estado do banco em " . $dia1;
+	$titulo = "Estado do banco em " . $dia2formatado;
 
 	$pdf->SetTitle($titulo);
 
