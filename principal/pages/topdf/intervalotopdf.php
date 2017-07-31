@@ -103,6 +103,7 @@ for ($i=0; $i < $dias; $i++) {
 	$amanha = date('Y/m/d', strtotime($dia2 .' +1 day'));
 	//$ontemformatado = date('d/m/Y', strtotime($ontem));
 	$_SESSION['dia2'] = $amanha;
+	$_SESSION['dia2formatado'] = date('d/m/Y', strtotime($_SESSION['dia2']));
 }
 
 /*
